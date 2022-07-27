@@ -1,0 +1,9 @@
+.mini-cart i {
+  color: #ffffff;
+}
+
+.mini-cart .amount {
+  padding: 2px 4px;
+  background-color: #ccc;
+  border-radius: 10px;
+}

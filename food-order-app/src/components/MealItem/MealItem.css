@@ -1,0 +1,40 @@
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.meal-item-image img {
+  width: 150px;
+}
+.meal-item-info {
+  display: flex;
+}
+.meal-item-desc {
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.meal-item-desc h4 {
+  font-size: 1.4rem;
+}
+.meal-add-to-cart {
+  text-align: right;
+}
+.meal-add-to-cart .amount {
+  margin-bottom: 10px;
+}
+.meal-add-to-cart .amount input {
+  max-width: 40px;
+}
+.meal-add-to-cart .btn-add {
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 4px 8px;
+  background: var(--primary-color);
+  color: #ffffff;
+}
