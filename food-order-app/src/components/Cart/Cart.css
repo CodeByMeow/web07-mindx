@@ -1,9 +1,14 @@
-.mini-cart i {
-  color: #ffffff;
+.mini-cart {
+  padding: 10px;
+  background-color: var(--grow);
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
 }
-
+.mini-cart span {
+  padding: 4px 8px;
+}
 .mini-cart .amount {
   padding: 2px 4px;
-  background-color: #ccc;
   border-radius: 10px;
 }

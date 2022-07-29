@@ -1,0 +1,17 @@
+.hero-image {
+  height: 400px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.introduce {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+}

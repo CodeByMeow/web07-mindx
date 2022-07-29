@@ -1,5 +1,7 @@
 :root {
   --primary-color: #7f2407;
+  --secondary-color: #313131;
+  --grow: #431502;
 }
 *,
 *::before,
@@ -11,6 +13,9 @@
 html {
   font-size: 62.5%;
 }
+body {
+  background-color: var(--secondary-color);
+}
 .wrapper {
   width: 100%;
 }
@@ -18,9 +23,7 @@ html {
   max-width: 1140px;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 20px;
 }
-
 .btn {
   border: none;
   padding: 4px;
