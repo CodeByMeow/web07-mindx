@@ -6,6 +6,7 @@ const URL = "https://625a91bf0ab4013f94a2d9a8.mockapi.io/meals";
 const HomePage = (props) => {
    const { addToCart } = props;
    const [meals, setMeals] = useState();
+   const [loader, setLoader] = useState(true);
    const getMeals = async () => {
       const data = await foodService.get(URL);
       const rs = data.data.splice(0, 4);
@@ -13,13 +14,18 @@ const HomePage = (props) => {
    };
 
    useEffect(() => {
+      setLoader(!loader);
       getMeals();
    }, []);
    return (
       <>
          <HeroImage />
          <div className="container">
-            <MealList meals={meals} addToCart={addToCart} />
+            {loader && loader ? (
+               <div className="loader"></div>
+            ) : (
+               <MealList meals={meals} addToCart={addToCart} />
+            )}
          </div>
       </>
    );
