@@ -1,13 +1,15 @@
-.wrapper {
-  background-color: var(--primary-color);
-}
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  background-color: var(--primary-color);
   padding: 1.5rem;
 }
-
-.logo {
+.logo a {
   color: #ffffff;
+  text-decoration: none;
+}
+.fixed {
+  position: fixed;
+  transition: all 0.3s linear;
 }
