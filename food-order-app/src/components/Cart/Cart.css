@@ -5,6 +5,7 @@
   border-radius: 15px;
   cursor: pointer;
   position: relative;
+  z-index: 3;
 }
 .mini-cart span {
   padding: 4px 8px;

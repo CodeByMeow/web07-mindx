@@ -24,3 +24,14 @@
   padding: 4px 8px;
   color: #444;
 }
+.meal-order {
+  width: 150px;
+}
+.form-field .error {
+  font-style: italic;
+  font-size: 10px;
+  color: red;
+}
+.form-field .error::first-letter {
+  text-transform: capitalize;
+}

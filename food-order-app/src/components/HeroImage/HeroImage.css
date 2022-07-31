@@ -1,12 +1,10 @@
 .hero-image {
-  height: 400px;
+  height: 200px;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.6rem;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 150px;
+  position: relative;
 }
 .introduce {
   width: 100%;
@@ -15,6 +13,10 @@
   background-color: var(--secondary-color);
   border-radius: 15px;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 .introduce p {
   margin: 10px 0;

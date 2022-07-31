@@ -2,6 +2,7 @@ import "./Cart.css";
 import CartItem from "../CartItem";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
 const Cart = (props) => {
    const [isOpen, setIsOpen] = useState(false);
    const {
@@ -12,7 +13,7 @@ const Cart = (props) => {
    const onClickHandle = () => setIsOpen(!isOpen);
    return (
       <div className="mini-cart" onClick={onClickHandle}>
-         <i className="fa-solid fa-cart-shopping"></i>
+         <FaCartPlus />
          <span>Your cart</span>
          <span className="amount">{totalAmount}</span>
 

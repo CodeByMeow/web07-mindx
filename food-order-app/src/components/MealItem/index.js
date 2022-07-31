@@ -35,7 +35,7 @@ const MealItem = (props) => {
                className="btn btn-add"
                onClick={() => addToCart(props.meal, amount)}
             >
-               Add +
+               + Add
             </button>
          </div>
       </div>
