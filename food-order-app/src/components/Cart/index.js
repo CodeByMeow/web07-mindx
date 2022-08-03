@@ -1,14 +1,18 @@
 import "./Cart.css";
-import CartItem from "../CartItem";
+import { CartItem } from "../../components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
-const Cart = (props) => {
+import { useCartContext } from "../../contexts/CartContext";
+const Cart = () => {
    const [isOpen, setIsOpen] = useState(false);
+
+   const cartCtx = useCartContext();
    const {
       cart: { items, total: totalPrice },
       updateItemCart,
-   } = props;
+   } = cartCtx;
+   console.log(cartCtx);
    const totalAmount = items.reduce((sum, item) => (sum += item.amount), 0);
    const onClickHandle = () => setIsOpen(!isOpen);
    return (

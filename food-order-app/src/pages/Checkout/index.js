@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./Checkout.css";
 import CartItem from "../../components/CartItem";
-const Checkout = (props) => {
+import { useCartContext } from "../../contexts/CartContext";
+const Checkout = () => {
    const {
       cart: { items },
       updateItemCart,
-   } = props;
+   } = useCartContext();
    const [customer, setCustomer] = useState({
       fullname: {
          value: "",

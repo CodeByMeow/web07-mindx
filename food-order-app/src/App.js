@@ -1,9 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import { Header } from "./components";
 import HomePage from "./pages/HomePage";
 import Checkout from "./pages/Checkout";
 import { useState } from "react";
+import CartContext from "./contexts/CartContext";
 function App() {
   const [cart, setCart] = useState({
     items: [],
@@ -46,16 +47,15 @@ function App() {
   };
 
   return (
-    <Router>
-      <Header cart={cart} updateItemCart={updateItemCart} />
-      <Routes>
-        <Route path="/" element={<HomePage addToCart={addToCart} />} />
-        <Route
-          path="/checkout"
-          element={<Checkout cart={cart} updateItemCart={updateItemCart} />}
-        />
-      </Routes>
-    </Router>
+    <CartContext.Provider value={{ cart, updateItemCart }}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage addToCart={addToCart} />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </Router>
+    </CartContext.Provider>
   );
 }
 

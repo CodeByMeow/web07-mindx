@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import Cart from "../Cart";
 import { useEffect, useState } from "react";
-const Header = (props) => {
-   const { cart, updateItemCart } = props;
+const Header = () => {
    const [sticky, setSticky] = useState(false);
    useEffect(() => {
       window.onscroll = () => {
@@ -19,7 +18,7 @@ const Header = (props) => {
                   <h1>ReactMeals</h1>
                </Link>
             </div>
-            <Cart cart={cart} updateItemCart={updateItemCart} />
+            <Cart />
          </div>
       </div>
    );

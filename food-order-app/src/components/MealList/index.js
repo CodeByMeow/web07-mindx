@@ -1,5 +1,5 @@
 import "./MealList.css";
-import MealItem from "../MealItem";
+import { MealItem } from "../../components";
 const MealList = (props) => {
    const { meals, addToCart } = props;
    const list =
