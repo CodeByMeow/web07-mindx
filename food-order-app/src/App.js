@@ -1,8 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import HomePage from "./pages/HomePage";
-import Checkout from "./pages/Checkout";
+import { HomePage, Checkout } from "./pages";
 import { useState } from "react";
 import CartContext from "./contexts/CartContext";
 function App() {

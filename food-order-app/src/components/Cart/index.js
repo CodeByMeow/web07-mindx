@@ -12,7 +12,6 @@ const Cart = () => {
       cart: { items, total: totalPrice },
       updateItemCart,
    } = cartCtx;
-   console.log(cartCtx);
    const totalAmount = items.reduce((sum, item) => (sum += item.amount), 0);
    const onClickHandle = () => setIsOpen(!isOpen);
    return (

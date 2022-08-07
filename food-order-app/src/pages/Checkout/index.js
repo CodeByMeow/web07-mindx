@@ -1,70 +1,37 @@
-import { useState } from "react";
 import "./Checkout.css";
-import CartItem from "../../components/CartItem";
+import { Formik, useFormik } from "formik";
+import { CartItem } from "../../components";
 import { useCartContext } from "../../contexts/CartContext";
 const Checkout = () => {
+   const validate = (values) => {
+      const errors = {};
+      if (!values.fullname) errors.fullname = "required";
+      if (!values.city) errors.city = "required";
+      if (!values.email) {
+         errors.email = "required";
+      } else if (
+         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+         errors.email = "Invalid email address";
+      }
+
+      return errors;
+   };
+   const formik = useFormik({
+      initialValues: {
+         fullname: "",
+         city: "",
+         email: "",
+      },
+      validate,
+      onSubmit: (values) => {
+         console.log(JSON.stringify(values, null, 2));
+      },
+   });
    const {
       cart: { items },
       updateItemCart,
    } = useCartContext();
-   const [customer, setCustomer] = useState({
-      fullname: {
-         value: "",
-         error: "",
-      },
-      city: {
-         value: "",
-         error: "",
-      },
-      email: {
-         value: "",
-         error: "",
-      },
-   });
-   const { fullname, city, email } = customer;
-   const onChangeHandler = (e) => {
-      const { name, value } = e.target;
-      setCustomer({
-         ...customer,
-         [name]: {
-            ...customer[name],
-            value: value,
-         },
-      });
-   };
-   const onSubmitHandler = (e) => {
-      e.preventDefault();
-      const validateCustomer = { ...customer };
-      for (const key in customer) {
-         const currentField = validateCustomer[key];
-         switch (key) {
-            case "fullname":
-               currentField.value === "" || currentField.value === null
-                  ? (validateCustomer[key].error = "fullname is required")
-                  : (validateCustomer[key].error = null);
-               break;
-            case "city":
-               currentField.value === "" || currentField.value === null
-                  ? (validateCustomer[key].error = "city is required")
-                  : (validateCustomer[key].error = null);
-               break;
-            case "email":
-               currentField.value === "" || currentField.value === null
-                  ? (validateCustomer[key].error = "email is required")
-                  : (validateCustomer[key].error = null);
-               break;
-            default:
-         }
-      }
-
-      const hasError = (validateData) =>
-         Object.values(validateData).some((item) => item.error);
-      if (hasError(validateCustomer)) {
-         setCustomer(validateCustomer);
-      } else {
-         //Checkout
-      }
-   };
 
    if (!items.length)
       return (
@@ -85,7 +52,7 @@ const Checkout = () => {
                      />
                   ))}
             </div>
-            <form onSubmit={onSubmitHandler}>
+            <form onSubmit={formik.handleSubmit}>
                <div className="form-field">
                   <label htmlFor="fullname">Your name</label>
                   <input
@@ -93,10 +60,11 @@ const Checkout = () => {
                      type="text"
                      id="fullname"
                      name="fullname"
-                     onChange={onChangeHandler}
+                     onChange={formik.handleChange}
+                     value={formik.values.fullname}
                   />
-                  {!!fullname.error && (
-                     <span className="error">{fullname.error}</span>
+                  {formik.errors.fullname && (
+                     <span className="error">{formik.errors.fullname}</span>
                   )}
                </div>
                <div className="form-field">
@@ -106,9 +74,12 @@ const Checkout = () => {
                      type="text"
                      id="city"
                      name="city"
-                     onChange={onChangeHandler}
+                     onChange={formik.handleChange}
+                     value={formik.values.city}
                   />
-                  {!!city.error && <span className="error">{city.error}</span>}
+                  {formik.errors.city && (
+                     <span className="error">{formik.errors.city}</span>
+                  )}
                </div>
                <div className="form-field">
                   <label htmlFor="email">Email</label>
@@ -117,9 +88,12 @@ const Checkout = () => {
                      type="text"
                      id="email"
                      name="email"
-                     onChange={onChangeHandler}
+                     onChange={formik.handleChange}
+                     value={formik.values.email}
                   />
-                  {!!email.error && <span className="error">{email.error}</span>}
+                  {formik.errors.email && (
+                     <span className="error">{formik.errors.email}</span>
+                  )}
                </div>
                <div className="submition">
                   <button className="btn btn--dark">Checkout</button>
