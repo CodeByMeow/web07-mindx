@@ -1,8 +1,15 @@
-import './App.css';
-
+import Header from "./components/Header";
+import MainContent from "./components/MainContent";
+import History from "./components/History";
+import Footer from "./components/Footer";
 function App() {
   return (
-    <div className="App"><h1>ExpensesTracker</h1></div>
+    <div>
+      <Header />
+      <MainContent />
+      <History />
+      <Footer />
+    </div>
   );
 }
 
