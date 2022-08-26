@@ -1,19 +1,27 @@
-import { Container } from '../../global/styles/Global.style'
+import { useState } from "react";
+import { Container } from "../../global/styles/Global.style";
 import Header from "../../components/Header";
 import Content from "../../components/Content";
-import History from '../../components/History';
-import Footer from '../../components/Footer';
-
+import History from "../../components/History";
+import Footer from "../../components/Footer";
+import Popup from "../../components/Popup";
 
 const HomePage = () => {
-   return (
-      <Container>
-         <Header />
-         <Content />
-         <History />
-         <Footer />
-      </Container>
-   )
-}
+  const [popup, setPopup] = useState(false);
+  const handleShowPopup = () => {
+    console.log(popup);
+    setPopup(!popup);
+  };
+
+  return (
+    <Container>
+      <Header showPopup={handleShowPopup} />
+      <Content />
+      <History />
+      <Footer />
+      {popup && <Popup />}
+    </Container>
+  );
+};
 
 export default HomePage;

@@ -1,5 +1,5 @@
 import { Row, AddButton } from "./Header.style";
-const Header = () => {
+const Header = ({ showPopup }) => {
   return (
     <Row>
       <AddButton />
