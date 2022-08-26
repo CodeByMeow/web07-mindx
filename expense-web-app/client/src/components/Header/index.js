@@ -1,11 +1,9 @@
-import { Wrapper, Content, AddButton } from "./Header.style";
+import { Row, AddButton } from "./Header.style";
 const Header = () => {
   return (
-    <Wrapper>
-      <Content>
-        <AddButton>+</AddButton>
-      </Content>
-    </Wrapper>
+    <Row>
+      <AddButton />
+    </Row>
   );
 };
 

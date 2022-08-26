@@ -1,11 +1,14 @@
-import { Wrapper } from "./Content.style";
+import { Row, OverView } from "./Content.style";
 const Content = () => {
   return (
-    <Wrapper>
-      <Content>
+      <Row>
         <h4>Spent this week</h4>
-      </Content>
-    </Wrapper>
+        <OverView>
+          <span className="currency">$</span>
+          <span className="total-transaction">292</span>
+          <span className="decimal">.50</span>
+        </OverView>
+      </Row>
   );
 };
 

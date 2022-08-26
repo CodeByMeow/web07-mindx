@@ -1,13 +1,11 @@
 import { GlobalStyle } from "./global/styles/Global.style";
-import Header from "./components/Header";
-import Content from "./components/Content";
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
     <div>
       <GlobalStyle />
-      <Header />
-      <Content />
+      <HomePage />
     </div>
   );
 }
