@@ -1,10 +1,10 @@
-import { FETCH_TRANSACTION } from "../constants/transactions";
+import {} from "../constants/transactionTypes";
 export default (state, action) => {
   switch (action.type) {
-    case FETCH_TRANSACTION:
-      break;
+    case SET_TRANSACTION_TYPE:
+      return { ...state, current_transaction_type: action.payload };
 
     default:
-      break;
+      return state;
   }
 };
