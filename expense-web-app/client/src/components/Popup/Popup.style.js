@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import {} from "react-icons";
+import { RiExchangeLine } from "react-icons/ri";
 export const Row = styled.div`
   padding: 1em 2em;
   height: 100vh;
@@ -34,13 +35,21 @@ export const Nav = styled.div`
 export const ContentInner = styled.div`
   height: 36em;
   display: flex;
-  justify-content: center;
   align-items: center;
+  form {
+    width: 100%;
+  }
   .transaction-input {
-    text-align: center;
     display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: 4em;
+    .input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      margin-left: auto;
+    }
     input {
       outline: none;
       border: none;
@@ -60,3 +69,11 @@ export const ContentInner = styled.div`
     }
   }
 `;
+
+export const ChangeTransaction = () => {
+  return (
+    <span style={{ marginLeft: "auto", color: "var(--gray)" }}>
+      <RiExchangeLine style={{ fontSize: "4em" }} />
+    </span>
+  );
+};

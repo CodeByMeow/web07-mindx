@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ContentInner, Nav, Row } from "./Popup.style";
+import { ChangeTransaction, ContentInner, Nav, Row } from "./Popup.style";
 
 const Popup = ({ actions }) => {
   const [input, setInput] = useState();
@@ -23,14 +23,17 @@ const Popup = ({ actions }) => {
       <ContentInner>
         <form>
           <div className="transaction-input">
-            <span className="currency">$</span>
-            <input
-              type="number"
-              placeholder="0"
-              onKeyDown={autoSize}
-              value={input}
-              onChange={handleInputChange}
-            />
+            <div className="input">
+              <span className="currency">$</span>
+              <input
+                type="number"
+                placeholder="0"
+                onKeyDown={autoSize}
+                value={input}
+                onChange={handleInputChange}
+              />
+            </div>
+            <ChangeTransaction />
           </div>
         </form>
       </ContentInner>
