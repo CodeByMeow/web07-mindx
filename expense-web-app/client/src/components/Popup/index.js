@@ -1,10 +1,39 @@
-import { Row } from "./Popup.style";
+import { useState } from "react";
+import { ContentInner, Nav, Row } from "./Popup.style";
 
-const Popup = () => {
+const Popup = ({ actions }) => {
+  const [input, setInput] = useState();
+  const autoSize = (e) => {
+    let value = 1;
+    if (e.key === "Backspace") value = -1;
+    e.target.style.width = e.target.value.length + value + "ch";
+  };
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
   return (
     <Row>
-      <span>Cancel</span>
-      <span className="current-transaction">Expense</span>
+      <Nav>
+        <button className="cancle" onClick={actions.handleShowPopup}>
+          Cancel
+        </button>
+        <span className="current-transaction">Expense</span>
+      </Nav>
+      <ContentInner>
+        <form>
+          <div className="transaction-input">
+            <span className="currency">$</span>
+            <input
+              type="number"
+              placeholder="0"
+              onKeyDown={autoSize}
+              value={input}
+              onChange={handleInputChange}
+            />
+          </div>
+        </form>
+      </ContentInner>
     </Row>
   );
 };

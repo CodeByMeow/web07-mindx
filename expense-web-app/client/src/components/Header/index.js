@@ -1,8 +1,10 @@
 import { Row, AddButton } from "./Header.style";
-const Header = ({ showPopup }) => {
+const Header = ({ actions }) => {
   return (
     <Row>
-      <AddButton />
+      <span onClick={actions.handleShowPopup}>
+        <AddButton />
+      </span>
     </Row>
   );
 };

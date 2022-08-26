@@ -15,11 +15,11 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Header showPopup={handleShowPopup} />
+      <Header actions={{ handleShowPopup }} />
       <Content />
       <History />
       <Footer />
-      {popup && <Popup />}
+      {popup && <Popup actions={{ handleShowPopup }} />}
     </Container>
   );
 };
