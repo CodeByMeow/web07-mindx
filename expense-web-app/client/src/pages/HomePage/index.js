@@ -9,7 +9,6 @@ import Popup from "../../components/Popup";
 const HomePage = () => {
   const [popup, setPopup] = useState(false);
   const handleShowPopup = () => {
-    console.log(popup);
     setPopup(!popup);
   };
 

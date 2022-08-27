@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { ChangeTransaction, ContentInner, Nav, Row } from "./Popup.style";
+import useTransaction from "../../hooks/useTransaction";
+import { changeCurrentTransactionType } from "../../contexts/GlobalActions";
+import { EXPENSES, IMCOME } from "../../constants/transactionTypes";
 
 const Popup = ({ actions }) => {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
+  const [state, dispatch] = useTransaction();
   const autoSize = (e) => {
     let value = 1;
     if (e.key === "Backspace") value = -1;
@@ -12,6 +16,17 @@ const Popup = ({ actions }) => {
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChangeTransaction = () => {
+    const transType =
+      state.currentTransactionType === EXPENSES ? IMCOME : EXPENSES;
+    dispatch(changeCurrentTransactionType(transType));
+  };
+
   return (
     <Row>
       <Nav>
@@ -21,7 +36,7 @@ const Popup = ({ actions }) => {
         <span className="current-transaction">Expense</span>
       </Nav>
       <ContentInner>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="transaction-input">
             <div className="input">
               <span className="currency">$</span>
@@ -33,7 +48,7 @@ const Popup = ({ actions }) => {
                 onChange={handleInputChange}
               />
             </div>
-            <ChangeTransaction />
+            <ChangeTransaction actions={{ handleChangeTransaction }} />
           </div>
         </form>
       </ContentInner>

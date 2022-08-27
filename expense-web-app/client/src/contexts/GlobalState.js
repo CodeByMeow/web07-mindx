@@ -7,9 +7,9 @@ const initialState = {
   currentTransactionType: EXPENSES,
 };
 
-const GlobalState = createContext(initialState);
+export const GlobalState = createContext(initialState);
 
-export const TransactionProvider = ({ children }) => {
+const TransactionProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
   return (
     <GlobalState.Provider value={[state, dispatch]}>
@@ -17,3 +17,5 @@ export const TransactionProvider = ({ children }) => {
     </GlobalState.Provider>
   );
 };
+
+export default TransactionProvider;

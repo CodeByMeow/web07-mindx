@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {} from "react-icons";
 import { RiExchangeLine } from "react-icons/ri";
 export const Row = styled.div`
-  padding: 1em 2em;
+  padding: 3em 2em;
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -47,7 +47,7 @@ export const ContentInner = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4em;
+      font-size: 3.5em;
       margin-left: auto;
     }
     input {
@@ -70,9 +70,12 @@ export const ContentInner = styled.div`
   }
 `;
 
-export const ChangeTransaction = () => {
+export const ChangeTransaction = ({ actions }) => {
   return (
-    <span style={{ marginLeft: "auto", color: "var(--gray)" }}>
+    <span
+      style={{ marginLeft: "auto", color: "var(--gray)" }}
+      onClick={actions.handleChangeTransaction}
+    >
       <RiExchangeLine style={{ fontSize: "4em" }} />
     </span>
   );
