@@ -20,6 +20,8 @@ body {
    --aqua:#ADCCB6;
    --grown:#4B3430;
    --green:#7D8A5F;
+   --content-height:28em;
+  --header-height:4em;
 }
 `;
 

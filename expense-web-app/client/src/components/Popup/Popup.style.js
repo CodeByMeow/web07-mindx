@@ -13,29 +13,36 @@ export const Row = styled.div`
 
 export const Nav = styled.div`
   font-size: 2em;
-  position: relative;
+  height: 4em;
+  width: 100%;
+  .nav-inner {
+    position: relative;
+    height: inherit;
+  }
   .current-transaction {
     font-weight: 800;
-    width: 100%;
     text-align: center;
-    display: block;
+    text-transform: capitalize;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .cancle {
-    margin-right: auto;
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
+    margin-right: auto;
     border: none;
     outlien: none;
     background: #fff;
     font-size: 1em;
+    cursor: pointer;
   }
 `;
 
 export const ContentInner = styled.div`
   height: 36em;
-  display: flex;
-  align-items: center;
   form {
     width: 100%;
   }
@@ -73,10 +80,68 @@ export const ContentInner = styled.div`
 export const ChangeTransaction = ({ actions }) => {
   return (
     <span
-      style={{ marginLeft: "auto", color: "var(--gray)" }}
+      style={{ marginLeft: "auto", color: "var(--gray)", cursor: "pointer" }}
       onClick={actions.handleChangeTransaction}
     >
       <RiExchangeLine style={{ fontSize: "4em" }} />
     </span>
   );
 };
+
+export const FieldInpout = styled.div`
+  text-align: center;
+  padding: 5em 0;
+
+  input[type="date"] {
+    outline: none;
+    font-size: 3em;
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    padding: 0 1em;
+    cursor: pointer;
+    font-family: inherit;
+  }
+`;
+
+export const GridCategory = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  .category-item {
+    text-align: center;
+
+    img {
+      width: 4em;
+      height: 4em;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    h5 {
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+  }
+`;
+
+export const Notes = styled.div`
+  padding: 3em 2em;
+  .notes {
+    font-size: 2em;
+    font-weight: 300;
+    padding: 1em;
+    width: 100%;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    outline: none;
+    font-family: inherit;
+  }
+`;
+
+export const SubmitBtn = styled.div`
+  padding: 3em 2em;
+
+  .submit {
+  }
+`;
