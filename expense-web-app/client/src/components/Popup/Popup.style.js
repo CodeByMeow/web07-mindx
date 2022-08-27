@@ -80,7 +80,13 @@ export const ContentInner = styled.div`
 export const ChangeTransaction = ({ actions }) => {
   return (
     <span
-      style={{ marginLeft: "auto", color: "var(--gray)", cursor: "pointer" }}
+      style={{
+        marginLeft: "auto",
+        color: "var(--gray)",
+        cursor: "pointer",
+        transiton: "all 1s ease-in-out",
+        transform: "rotate(90deg)",
+      }}
       onClick={actions.handleChangeTransaction}
     >
       <RiExchangeLine style={{ fontSize: "4em" }} />
@@ -103,27 +109,6 @@ export const FieldInpout = styled.div`
   }
 `;
 
-export const GridCategory = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1em;
-  .category-item {
-    text-align: center;
-
-    img {
-      width: 4em;
-      height: 4em;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    h5 {
-      font-size: 1.2em;
-      font-weight: 300;
-    }
-  }
-`;
-
 export const Notes = styled.div`
   padding: 3em 2em;
   .notes {
@@ -141,7 +126,15 @@ export const Notes = styled.div`
 
 export const SubmitBtn = styled.div`
   padding: 3em 2em;
-
   .submit {
+    font-size: 2em;
+    background-color: var(--green);
+    padding: 1em;
+    width: 100%;
+    border-radius: 1.125em;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
   }
 `;

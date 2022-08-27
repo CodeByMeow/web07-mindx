@@ -13,14 +13,14 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 :root{
-   --gray-light:#ECECEC;
-   --gray:#C0BEC3;
-   --gray-dark:#57565E;
-   --black: #09080C;
-   --aqua:#ADCCB6;
-   --grown:#4B3430;
-   --green:#7D8A5F;
-   --content-height:28em;
+  --gray-light:#ECECEC;
+  --gray:#C0BEC3;
+  --gray-dark:#57565E;
+  --black: #09080C;
+  --aqua:#ADCCB6;
+  --grown:#4B3430;
+  --green:#7D8A5F;
+  --content-height:28em;
   --header-height:4em;
 }
 `;

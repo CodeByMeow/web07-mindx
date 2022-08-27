@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { EXPENSES, INCOME } from "../../constants/transactionTypes";
+import { formatDate } from "../../utils/formatDatetime";
 import {
   ChangeTransaction,
   ContentInner,
   FieldInpout,
-  GridCategory,
   Nav,
   Notes,
   Row,
+  SubmitBtn,
 } from "./Popup.style";
 import useTransaction from "../../hooks/useTransaction";
 import { changeCurrentTransactionType } from "../../contexts/GlobalActions";
-import { EXPENSES, IMCOME } from "../../constants/transactionTypes";
-import { formatDate } from "../../utils/formatDatetime";
+import Category from "../../components/Category";
 
 const Popup = ({ actions }) => {
   const [trans, setTrans] = useState(() => {
@@ -19,6 +20,7 @@ const Popup = ({ actions }) => {
     return {
       amount: "",
       date: formatDate(today),
+      category: "",
     };
   });
   const [state, dispatch] = useTransaction();
@@ -36,13 +38,20 @@ const Popup = ({ actions }) => {
     });
   };
 
+  const handleSelectCategory = (categoryId) => {
+    setTrans({
+      ...trans,
+      category: categoryId,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const handleChangeTransaction = () => {
     const transType =
-      state.currentTransactionType === EXPENSES ? IMCOME : EXPENSES;
+      state.currentTransactionType === EXPENSES ? INCOME : EXPENSES;
     dispatch(changeCurrentTransactionType(transType));
   };
 
@@ -83,56 +92,7 @@ const Popup = ({ actions }) => {
               name="date"
             />
           </FieldInpout>
-          <GridCategory>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-            <div className="category-item">
-              <img src="https://source.unsplash.com/random" alt="" />
-              <h5>Snacks</h5>
-            </div>
-          </GridCategory>
+          <Category actions={{ handleSelectCategory }} />
           <Notes>
             <textarea
               className="notes"
@@ -140,6 +100,11 @@ const Popup = ({ actions }) => {
               rows="1"
             ></textarea>
           </Notes>
+          <SubmitBtn>
+            <button type="submit" className="submit">
+              Save
+            </button>
+          </SubmitBtn>
         </form>
       </ContentInner>
     </Row>
