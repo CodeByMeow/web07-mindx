@@ -13,7 +13,6 @@ export const ItemImg = styled.div`
     width: 4em;
     height: 4em;
     object-fit: cover;
-    border-radius: 50%;
   }
 `;
 
