@@ -17,5 +17,4 @@ export const Image = styled.img`
   width: 5em;
   height: 5em;
   object-fit: cover;
-  border-radius: 50%;
 `;

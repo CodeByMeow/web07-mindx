@@ -1,99 +1,87 @@
+import { useState } from "react";
 import { Row, Select } from "./Category.style";
 import CategoryItem from "../CategoryItem";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import useTransaction from "../../hooks/useTransaction";
-import { useRef, useState } from "react";
 
 const categories = [
   {
     id: "1",
     title: "Housing",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "housing.png",
   },
   {
     id: "2",
     title: "Transportation",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "transportation.png",
   },
   {
     id: "3",
     title: "Food",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
-  },
-  {
-    id: "4",
-    title: "Utilties",
-    type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "food.png",
   },
   {
     id: "5",
     title: "Insurance",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
-  },
-  {
-    id: "6",
-    title: "Medical and Healthcare",
-    type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "insurance.png",
   },
   {
     id: "7",
     title: "Saving",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "saving.png",
   },
   {
     id: "8",
     title: "Personal Spending",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "personal.png",
   },
   {
     id: "9",
     title: "Entertainment",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "popcorn.png",
   },
   {
     id: "10",
     title: "Miscellaneous",
     type: EXPENSES,
-    img: "https://source.unsplash.com/random",
+    img: "duck.png",
   },
   {
     id: "11",
     title: "Wages",
     type: INCOME,
-    img: "https://source.unsplash.com/random",
+    img: "wage.png",
   },
   {
     id: "12",
     title: "Salary",
     type: INCOME,
-    img: "https://source.unsplash.com/random",
+    img: "salary.png",
   },
   {
     id: "13",
     title: "Gift",
     type: INCOME,
-    img: "https://source.unsplash.com/random",
+    img: "giftbox.png",
   },
   {
     id: "14",
     title: "Selling something",
     type: INCOME,
-    img: "https://source.unsplash.com/random",
+    img: "trade.png",
   },
   {
     id: "15",
     title: "Pocket money",
     type: INCOME,
-    img: "https://source.unsplash.com/random",
+    img: "wallet.png",
   },
 ];
 

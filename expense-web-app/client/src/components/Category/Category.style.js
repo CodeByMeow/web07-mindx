@@ -5,7 +5,7 @@ export const Row = styled.div`
 `;
 
 export const Select = styled.div`
-  height: 20em;
+  height: 24em;
   overflow-y: scroll;
   border-bottom: 1px solid var(--gray);
 `;
