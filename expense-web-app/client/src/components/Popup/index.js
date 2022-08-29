@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
 import {
@@ -11,7 +12,10 @@ import {
   SubmitBtn,
 } from "./Popup.style";
 import useTransaction from "../../hooks/useTransaction";
-import { changeCurrentTransactionType } from "../../contexts/GlobalActions";
+import {
+  addTransaction,
+  changeCurrentTransactionType,
+} from "../../contexts/GlobalActions";
 import Category from "../../components/Category";
 
 const Popup = ({ actions }) => {
@@ -21,6 +25,8 @@ const Popup = ({ actions }) => {
       amount: "",
       date: formatDate(today),
       category: "",
+      note: "",
+      id: uuidv4(),
     };
   });
   const [state, dispatch] = useTransaction();
@@ -47,6 +53,8 @@ const Popup = ({ actions }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addTransaction(trans));
+    actions.handleShowPopup();
   };
 
   const handleChangeTransaction = () => {
@@ -98,6 +106,8 @@ const Popup = ({ actions }) => {
               className="notes"
               placeholder="Note..."
               rows="1"
+              onChange={handleInputChange}
+              name="note"
             ></textarea>
           </Notes>
           <SubmitBtn>

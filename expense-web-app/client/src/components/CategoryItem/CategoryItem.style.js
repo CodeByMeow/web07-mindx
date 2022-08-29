@@ -6,6 +6,7 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   background-color: ${(props) => props.bg};
+  color: ${(props) => props.color};
   h5 {
     font-size: 2em;
     font-weight: 300;

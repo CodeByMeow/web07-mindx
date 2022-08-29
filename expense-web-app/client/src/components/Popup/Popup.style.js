@@ -13,7 +13,7 @@ export const Row = styled.div`
 
 export const Nav = styled.div`
   font-size: 2em;
-  height: 4em;
+  height: 8em;
   width: 100%;
   .nav-inner {
     position: relative;
@@ -110,7 +110,7 @@ export const FieldInpout = styled.div`
 `;
 
 export const Notes = styled.div`
-  padding: 3em 2em;
+  padding: 0em 2em;
   .notes {
     font-size: 2em;
     font-weight: 300;

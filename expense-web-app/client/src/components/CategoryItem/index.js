@@ -5,6 +5,7 @@ const CategoryItem = ({ item, actions, isSelect }) => {
     <Item
       onClick={() => actions.handleItemSelected(item.id)}
       bg={isSelect ? "var(--aqua)" : ""}
+      color={isSelect ? "#fff" : ""}
     >
       <Image src={`${CATEGORIES_IMG_PATH}${item.img}`} alt={item.title} />
       <h5>{item.title}</h5>
