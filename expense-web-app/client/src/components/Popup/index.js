@@ -105,6 +105,7 @@ const Popup = ({ actions }) => {
                 onChange={handleInputChange}
                 step={0.01}
                 name="amount"
+                min={0}
               />
             </div>
             <ChangeTransaction actions={{ handleChangeTransaction }} />
