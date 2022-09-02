@@ -46,6 +46,14 @@ export const ContentInner = styled.div`
   form {
     width: 100%;
   }
+  .error-message {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    :first-letter {
+      text-transform: capitalize;
+    }
+  }
   .transaction-input {
     display: flex;
     justify-content: center;

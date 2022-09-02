@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
@@ -30,6 +30,8 @@ const Popup = ({ actions }) => {
     };
   });
   const [state, dispatch] = useTransaction();
+  const [error, setError] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const autoSize = (e) => {
     let value = 1;
     if (e.key === "Backspace") value = -1;
@@ -53,8 +55,23 @@ const Popup = ({ actions }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTransaction(trans));
-    actions.handleShowPopup();
+    setError(validate(trans));
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    if (Object.keys(error).length === 0 && isSubmit) {
+      dispatch(addTransaction(trans));
+      actions.handleShowPopup();
+    }
+  }, [error]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.amount) errors.amount = "Amount is required";
+    if (values.amount == 0) errors.amount = "Amount have to more than 0";
+    if (!values.category) errors.category = "Category is required";
+    return errors;
   };
 
   const handleChangeTransaction = () => {
@@ -92,6 +109,7 @@ const Popup = ({ actions }) => {
             </div>
             <ChangeTransaction actions={{ handleChangeTransaction }} />
           </div>
+          {error.amount && <p className="error-message">{error.amount}</p>}
           <FieldInpout>
             <input
               type="date"
@@ -101,6 +119,7 @@ const Popup = ({ actions }) => {
             />
           </FieldInpout>
           <Category actions={{ handleSelectCategory }} />
+          {error.category && <p className="error-message">{error.category}</p>}
           <Notes>
             <textarea
               className="notes"
