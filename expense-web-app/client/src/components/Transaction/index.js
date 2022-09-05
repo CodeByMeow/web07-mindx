@@ -3,8 +3,10 @@ import useCategories from "../../hooks/useCategories";
 import { CATEGORIES_IMG_PATH } from "../../constants/imageSrc";
 
 const Transaction = ({ item }) => {
-  const categoriesObj = useCategories();
-  const { title: catTitle, img } = categoriesObj.getCategory(item.category);
+  const categories = useCategories();
+  const { name: catTitle, img } = categories.find(
+    (category) => (category.id = item.id)
+  );
   return (
     <Item>
       <ItemImg>

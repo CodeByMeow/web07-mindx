@@ -5,14 +5,14 @@ import useTransaction from "../../hooks/useTransaction";
 import useCategories from "../../hooks/useCategories";
 
 const Category = ({ actions }) => {
-  const [state, dispatch] = useTransaction();
+  const [state] = useTransaction();
   const [selected, setSelected] = useState();
-  const categoriesObj = useCategories();
+  const categories = useCategories();
   const handleItemSelected = (id) => {
     setSelected(id);
     actions.handleSelectCategory(id);
   };
-  const CategoryList = categoriesObj.categories.reduce((list, item) => {
+  const CategoryList = categories.reduce((list, item) => {
     if (item.type === state.currentTransactionType)
       return [
         ...list,

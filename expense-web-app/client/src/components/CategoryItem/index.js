@@ -7,8 +7,8 @@ const CategoryItem = ({ item, actions, isSelect }) => {
       bg={isSelect ? "var(--aqua)" : ""}
       color={isSelect ? "#fff" : ""}
     >
-      <Image src={`${CATEGORIES_IMG_PATH}${item.img}`} alt={item.title} />
-      <h5>{item.title}</h5>
+      <Image src={`${CATEGORIES_IMG_PATH}${item.img}`} alt={item.name} />
+      <h5>{item.name}</h5>
     </Item>
   );
 };
