@@ -27,7 +27,6 @@ export const ItemDesc = styled.div`
 `;
 
 export const ItemAmount = styled(ItemDesc)`
-  h4 {
-    text-align: right;
-  }
+  text-align: right;
+  padding: 1em 0;
 `;

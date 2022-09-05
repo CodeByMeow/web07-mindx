@@ -2,15 +2,19 @@ import {
   ADD_TRANSACTION,
   SET_TRANSACTION_TYPE,
 } from "../constants/transactionActions";
+import { EXPENSES } from "../constants/transactionTypes";
 
 const setTransactionType = (state, action) => {
   return { ...state, currentTransactionType: action.payload };
 };
 
 const addTransaction = (state, action) => {
+  const sign = state.currentTransactionType === EXPENSES ? -1 : 1;
+  const total = state.totalSpent + action.payload.amount * sign;
   return {
     ...state,
     transactions: [...state.transactions, action.payload],
+    totalSpent: total,
   };
 };
 

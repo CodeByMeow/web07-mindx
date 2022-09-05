@@ -18,7 +18,6 @@ const Transaction = ({ item }) => {
       </ItemDesc>
       <ItemAmount>
         <h4>{`$${item.amount}`}</h4>
-        <span>$383.00</span>
       </ItemAmount>
     </Item>
   );

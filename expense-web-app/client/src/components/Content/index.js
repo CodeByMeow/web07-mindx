@@ -8,7 +8,7 @@ const Content = () => {
   const decimalTotal = getDecimalPart(totalSpent);
   return (
     <Row>
-      <h4>Spent this week</h4>
+      <h4>Your balance</h4>
       <OverView>
         <span className="currency">$</span>
         <span className="total-transaction">{naturalTotal}</span>
