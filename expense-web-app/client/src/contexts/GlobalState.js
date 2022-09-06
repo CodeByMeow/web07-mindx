@@ -5,7 +5,7 @@ import AppReducer from "./AppReducer";
 const initialState = {
   transactions: [],
   currentTransactionType: EXPENSES,
-  totalSpent: 0.0,
+  totalSpent: 0,
 };
 
 export const GlobalState = createContext(initialState);

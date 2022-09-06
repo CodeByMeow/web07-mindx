@@ -10,7 +10,9 @@ const setTransactionType = (state, action) => {
 
 const addTransaction = (state, action) => {
   const sign = state.currentTransactionType === EXPENSES ? -1 : 1;
-  const total = state.totalSpent + action.payload.amount * sign;
+  let total = state.totalSpent + action.payload.amount * sign;
+  total = Math.round(total * 100) / 100;
+
   return {
     ...state,
     transactions: [...state.transactions, action.payload],

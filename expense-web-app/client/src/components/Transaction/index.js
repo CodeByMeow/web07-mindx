@@ -4,9 +4,8 @@ import { CATEGORIES_IMG_PATH } from "../../constants/imageSrc";
 
 const Transaction = ({ item }) => {
   const categories = useCategories();
-  const { name: catTitle, img } = categories.find(
-    (category) => (category.id = item.id)
-  );
+  const cat = categories.find((category) => category.id === item.category);
+  const { name: catTitle, img } = cat;
   return (
     <Item>
       <ItemImg>

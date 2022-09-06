@@ -4,7 +4,7 @@ export const Row = styled.div`
   padding: 5em 2em;
   height: var(--content-height);
   h4 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-weight: 500;
     color: var(--gray-dark);
     text-align: center;
