@@ -27,7 +27,15 @@ export const ItemDesc = styled.div`
 `;
 
 export const ItemAmount = styled(ItemDesc)`
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
   h4 {
     text-align: right;
+  }
+  img {
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: cover;
   }
 `;
