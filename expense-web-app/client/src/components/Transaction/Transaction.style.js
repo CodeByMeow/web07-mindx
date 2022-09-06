@@ -4,6 +4,7 @@ export const Item = styled.div`
   display: flex;
   justify-content: space-bettween;
   align-items: center;
+  border-bottom: 1px solid var(--gray);
 `;
 
 export const ItemImg = styled.div`
@@ -19,7 +20,6 @@ export const ItemImg = styled.div`
 export const ItemDesc = styled.div`
   flex: 1;
   padding: 1em 0;
-  border-bottom: 1px solid var(--gray);
   h4 {
     font-size: 2em;
     font-weight: 500;
