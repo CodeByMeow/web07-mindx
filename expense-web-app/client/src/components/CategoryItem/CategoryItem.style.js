@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Item = styled.div`
   cursor: pointer;
-  padding: 1em;
+  padding: 0.5em;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.bg};
@@ -10,12 +10,12 @@ export const Item = styled.div`
   h5 {
     font-size: 2em;
     font-weight: 300;
-    padding: 1em;
+    padding: 0.8em;
   }
 `;
 
 export const Image = styled.img`
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   object-fit: cover;
 `;

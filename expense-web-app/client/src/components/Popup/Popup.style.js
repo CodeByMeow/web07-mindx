@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {} from "react-icons";
 import { RiExchangeLine } from "react-icons/ri";
 export const Row = styled.div`
   padding: 3em 2em;
@@ -9,6 +8,7 @@ export const Row = styled.div`
   left: 0;
   top: 0;
   background-color: #fff;
+  z-index: 1;
 `;
 
 export const Nav = styled.div`
