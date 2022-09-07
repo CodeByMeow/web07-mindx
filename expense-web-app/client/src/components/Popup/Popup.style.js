@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {} from "react-icons";
 import { RiExchangeLine } from "react-icons/ri";
 export const Row = styled.div`
   padding: 3em 2em;

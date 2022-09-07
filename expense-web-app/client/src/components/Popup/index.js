@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
@@ -31,6 +31,7 @@ const Popup = ({ actions, selectedTrans }) => {
       id: uuidv4(),
     };
   });
+  const inputRef = useRef();
   const [state, dispatch] = useTransaction();
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -126,6 +127,7 @@ const Popup = ({ actions, selectedTrans }) => {
                 step={0.01}
                 name="amount"
                 min={0}
+                ref={inputRef}
               />
             </div>
             <ChangeTransaction actions={{ handleChangeTransaction }} />
