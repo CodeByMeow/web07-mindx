@@ -8,13 +8,13 @@ import {
 } from "../../constants/imageSrc";
 import { EXPENSES } from "../../constants/transactionTypes";
 
-const Transaction = ({ item }) => {
+const Transaction = ({ item, actions }) => {
   const categories = useCategories();
   const cat = categories.find((category) => category.id === item.category);
   const { name: catTitle, img, type } = cat;
   const arrow = type === EXPENSES ? DECREASE_ARROW : INCREASE_ARROW;
   return (
-    <Item>
+    <Item onClick={() => actions.handleShowPopup(item, true)}>
       <ItemImg>
         <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
       </ItemImg>

@@ -1,6 +1,7 @@
 import {
   ADD_TRANSACTION,
   SET_TRANSACTION_TYPE,
+  UPDATE_TRANSACTION,
 } from "../constants/transactionActions";
 
 export const changeCurrentTransactionType = (transactionType) => ({
@@ -9,5 +10,9 @@ export const changeCurrentTransactionType = (transactionType) => ({
 });
 export const addTransaction = (data) => ({
   type: ADD_TRANSACTION,
+  payload: data,
+});
+export const updateTransaction = (data) => ({
+  type: UPDATE_TRANSACTION,
   payload: data,
 });

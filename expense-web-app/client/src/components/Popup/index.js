@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
+import useCategories from "../../hooks/useCategories";
 import {
   ChangeTransaction,
   ContentInner,
@@ -15,10 +16,11 @@ import useTransaction from "../../hooks/useTransaction";
 import {
   addTransaction,
   changeCurrentTransactionType,
+  updateTransaction,
 } from "../../contexts/GlobalActions";
 import Category from "../../components/Category";
 
-const Popup = ({ actions }) => {
+const Popup = ({ actions, selectedTrans }) => {
   const [trans, setTrans] = useState(() => {
     const today = new Date();
     return {
@@ -32,6 +34,16 @@ const Popup = ({ actions }) => {
   const [state, dispatch] = useTransaction();
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const categories = useCategories();
+
+  useEffect(() => {
+    if (selectedTrans) {
+      setTrans(selectedTrans);
+      const cat = categories.find((item) => item.id === selectedTrans.category);
+      dispatch(changeCurrentTransactionType(cat.type));
+    }
+  }, []);
+
   const autoSize = (e) => {
     let value = 1;
     if (e.key === "Backspace") value = -1;
@@ -61,7 +73,12 @@ const Popup = ({ actions }) => {
 
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmit) {
-      dispatch(addTransaction(trans));
+      const hasID = state.transactions.some((item) => item.id === trans.id);
+      if (hasID) {
+        dispatch(updateTransaction(trans));
+      } else {
+        dispatch(addTransaction(trans));
+      }
       actions.handleShowPopup();
     }
   }, [error]);
@@ -84,7 +101,10 @@ const Popup = ({ actions }) => {
     <Row>
       <Nav>
         <div className="nav-inner">
-          <button className="cancle" onClick={actions.handleShowPopup}>
+          <button
+            className="cancle"
+            onClick={() => actions.handleShowPopup(null)}
+          >
             Cancel
           </button>
           <span className="current-transaction">
@@ -119,7 +139,10 @@ const Popup = ({ actions }) => {
               name="date"
             />
           </FieldInpout>
-          <Category actions={{ handleSelectCategory }} />
+          <Category
+            actions={{ handleSelectCategory }}
+            selectedCat={trans.category}
+          />
           {error.category && <p className="error-message">{error.category}</p>}
           <Notes>
             <textarea
@@ -128,6 +151,7 @@ const Popup = ({ actions }) => {
               rows="1"
               onChange={handleInputChange}
               name="note"
+              defaultValue={trans.note}
             ></textarea>
           </Notes>
           <SubmitBtn>

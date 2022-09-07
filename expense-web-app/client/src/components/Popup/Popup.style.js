@@ -68,6 +68,7 @@ export const ContentInner = styled.div`
     input {
       outline: none;
       border: none;
+      min-width: calc(4ch + 0.4em);
       border-bottom: 3px solid var(--gray);
       display: block;
       font-size: 2em;

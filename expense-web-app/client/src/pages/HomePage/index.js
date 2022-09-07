@@ -8,17 +8,26 @@ import Popup from "../../components/Popup";
 
 const HomePage = () => {
   const [popup, setPopup] = useState(false);
-  const handleShowPopup = () => {
-    setPopup(!popup);
+  const [selectedTrans, setSelectedTrans] = useState(null);
+  const handleShowPopup = (trans, isUpdate = false) => {
+    setPopup((prev) => {
+      if (isUpdate) {
+        console.log(trans.amount);
+        setSelectedTrans({ ...trans, old_amount: trans.amount });
+      }
+      return !prev;
+    });
   };
 
   return (
     <Container>
       <Header actions={{ handleShowPopup }} />
       <Content />
-      <History />
+      <History actions={{ handleShowPopup }} />
       <Footer />
-      {popup && <Popup actions={{ handleShowPopup }} />}
+      {popup && (
+        <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />
+      )}
     </Container>
   );
 };
