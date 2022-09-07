@@ -12,8 +12,9 @@ const HomePage = () => {
   const handleShowPopup = (trans, isUpdate = false) => {
     setPopup((prev) => {
       if (isUpdate) {
-        console.log(trans.amount);
         setSelectedTrans({ ...trans, old_amount: trans.amount });
+      } else {
+        setSelectedTrans(null);
       }
       return !prev;
     });
