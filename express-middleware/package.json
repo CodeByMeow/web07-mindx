@@ -1,0 +1,17 @@
+{
+  "name": "express-middleware",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
