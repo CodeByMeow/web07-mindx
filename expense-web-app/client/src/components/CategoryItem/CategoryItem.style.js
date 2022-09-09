@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Item = styled.div`
   cursor: pointer;
-  padding: 0.5em;
+  padding: 0.8em 0.5em;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.bg};
   color: ${(props) => props.color};
   h5 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 300;
     padding: 0.8em;
   }

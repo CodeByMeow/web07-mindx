@@ -14,7 +14,10 @@ const Transaction = ({ item, actions }) => {
   const { name: catTitle, img, type } = cat;
   const arrow = type === EXPENSES ? DECREASE_ARROW : INCREASE_ARROW;
   return (
-    <Item onClick={() => actions.handleShowPopup(item, true)}>
+    <Item
+      animate={{ y: -10 }}
+      onClick={() => actions.handleShowPopup(item, true)}
+    >
       <ItemImg>
         <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
       </ItemImg>
