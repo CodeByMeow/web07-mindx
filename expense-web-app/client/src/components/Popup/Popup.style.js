@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { RiExchangeLine } from "react-icons/ri";
-export const Row = styled.div`
+export const Row = styled(motion.div)`
   padding: 3em 2em;
   height: 100vh;
   width: 100%;
@@ -12,8 +13,8 @@ export const Row = styled.div`
 `;
 
 export const Nav = styled.div`
-  font-size: 2em;
-  height: 8em;
+  font-size: 1.5em;
+  height: 3.5em;
   width: 100%;
   .nav-inner {
     position: relative;
@@ -36,19 +37,26 @@ export const Nav = styled.div`
     border: none;
     outlien: none;
     background: #fff;
-    font-size: 1em;
     cursor: pointer;
   }
 `;
 
 export const ContentInner = styled.div`
-  height: 36em;
   form {
     width: 100%;
+    height: 90%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0 2em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
   .error-message {
     color: red;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
     :first-letter {
       text-transform: capitalize;
@@ -62,13 +70,13 @@ export const ContentInner = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3.5em;
+      font-size: 2.5em;
       margin-left: auto;
     }
     input {
       outline: none;
       border: none;
-      min-width: calc(4ch + 0.4em);
+      min-width: ${(props) => props.width + "ch"};
       border-bottom: 3px solid var(--gray);
       display: block;
       font-size: 2em;
@@ -98,18 +106,18 @@ export const ChangeTransaction = ({ actions }) => {
       }}
       onClick={actions.handleChangeTransaction}
     >
-      <RiExchangeLine style={{ fontSize: "4em" }} />
+      <RiExchangeLine style={{ fontSize: "3em" }} />
     </span>
   );
 };
 
 export const FieldInpout = styled.div`
   text-align: center;
-  padding: 5em 0;
+  padding: 3em 0;
 
   input[type="date"] {
     outline: none;
-    font-size: 3em;
+    font-size: 2em;
     border: none;
     border-bottom: 1px solid var(--gray);
     padding: 0 1em;
@@ -119,9 +127,8 @@ export const FieldInpout = styled.div`
 `;
 
 export const Notes = styled.div`
-  padding: 0em 2em;
   .notes {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 300;
     padding: 1em;
     width: 100%;
@@ -134,11 +141,11 @@ export const Notes = styled.div`
 `;
 
 export const SubmitBtn = styled.div`
-  padding: 3em 2em;
+  padding: 1em 2em;
   .submit {
     font-size: 2em;
     background-color: var(--green);
-    padding: 1em;
+    padding: 0.8em;
     width: 100%;
     border-radius: 1.125em;
     outline: none;

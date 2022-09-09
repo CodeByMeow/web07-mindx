@@ -18,7 +18,7 @@ const Category = ({ actions, selectedCat }) => {
           key={item.id}
           item={item}
           actions={{ handleItemSelected }}
-          isSelect={selectedCat == item.id}
+          isSelect={selectedCat === item.id}
         />,
       ];
     return list;

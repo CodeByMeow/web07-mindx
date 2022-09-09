@@ -97,8 +97,13 @@ const Popup = ({ actions, selectedTrans }) => {
     dispatch(changeCurrentTransactionType(transType));
   };
 
+  const backdrop = {
+    visible: { translateY: 0 },
+    hidden: { translateY: "100%" },
+  };
+
   return (
-    <Row>
+    <Row initial="hidden" variants={backdrop} animate="visible">
       <Nav>
         <div className="nav-inner">
           <button
@@ -112,7 +117,7 @@ const Popup = ({ actions, selectedTrans }) => {
           </span>
         </div>
       </Nav>
-      <ContentInner>
+      <ContentInner width={trans.amount.length}>
         <form onSubmit={handleSubmit}>
           <div className="transaction-input">
             <div className="input">
