@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Row = styled.div`
-  padding: 5em 2em;
+  padding: 3em 2em;
   height: var(--content-height);
   h4 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: 500;
     color: var(--gray-dark);
     text-align: center;
@@ -16,7 +16,7 @@ export const OverView = styled.div`
   text-aligh: center;
   display: flex;
   justify-content: center;
-  font-size: 8em;
+  font-size: 6em;
   & .currency {
     font-size: 0.6em;
     color: var(--gray-dark);
