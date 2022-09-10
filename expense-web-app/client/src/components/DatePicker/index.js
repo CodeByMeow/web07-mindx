@@ -1,11 +1,12 @@
 import { Stack, TextField } from "@mui/material";
 import { MobileDateTimePicker } from "@mui/x-date-pickers";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const MuiDatePicker = ({ selectedDate, actions }) => {
   return (
     <Stack spacing={4}>
       <MobileDateTimePicker
-        label="Date Picker"
         renderInput={(params) => <TextField {...params} />}
         value={selectedDate}
         onChange={(newValue) =>
@@ -13,6 +14,8 @@ const MuiDatePicker = ({ selectedDate, actions }) => {
         }
         className="datepicker"
         ampm={false}
+        leftArrowIcon={<KeyboardArrowLeft />}
+        rightArrowIcon={<KeyboardArrowRight />}
       />
     </Stack>
   );

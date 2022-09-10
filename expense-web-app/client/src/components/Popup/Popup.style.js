@@ -31,22 +31,22 @@ export const Nav = styled.div`
   }
   .current-transaction {
     font-weight: 800;
-    text-align: center;
     text-transform: capitalize;
+    width: 100%;
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
+    left: 0;
+    z-index: 1;
   }
   .cancle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-right: auto;
     border: none;
-    outlien: none;
+    outline: none;
+    text-align: left;
     background: #fff;
     cursor: pointer;
+    position: absolute;
+    left: 0;
+    z-index: 2;
   }
 `;
 
@@ -78,9 +78,7 @@ export const ContentInner = styled.div`
     }
   }
   .transaction-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     .input {
       display: flex;
       align-items: center;
@@ -111,18 +109,22 @@ export const ContentInner = styled.div`
 
 export const ChangeTransaction = ({ actions }) => {
   return (
-    <span
+    <motion.span
       style={{
         marginLeft: "auto",
         color: "var(--gray)",
         cursor: "pointer",
         transiton: "all 1s ease-in-out",
         transform: "rotate(90deg)",
+        position: "absolute",
+        top: 0,
+        right: 0,
       }}
+      whileHover={{ scale: 1.5, rotate: 90 }}
       onClick={actions.handleChangeTransaction}
     >
       <RiExchangeLine style={{ fontSize: "3em" }} />
-    </span>
+    </motion.span>
   );
 };
 

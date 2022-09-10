@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { motion } from "framer-motion";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
 import useCategories from "../../hooks/useCategories";
@@ -144,9 +145,14 @@ const Popup = ({ actions, selectedTrans }) => {
             >
               Cancel
             </button>
-            <span className="current-transaction">
+            <motion.span
+              className="current-transaction"
+              initial={{ y: 10 }}
+              animate={{ y: 0 }}
+              key={state.currentTransactionType}
+            >
               {state.currentTransactionType}
-            </span>
+            </motion.span>
           </div>
         </Nav>
         <ContentInner width={trans.amount.length}>
