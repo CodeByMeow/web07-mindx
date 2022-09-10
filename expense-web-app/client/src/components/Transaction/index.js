@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Item, ItemImg, ItemDesc, ItemAmount } from "./Transaction.style";
 import useCategories from "../../hooks/useCategories";
 import {
@@ -13,6 +14,7 @@ const Transaction = ({ item, actions }) => {
   const cat = categories.find((category) => category.id === item.category);
   const { name: catTitle, img, type } = cat;
   const arrow = type === EXPENSES ? DECREASE_ARROW : INCREASE_ARROW;
+  const date = moment(item.date).fromNow();
   return (
     <Item
       animate={{ y: -10 }}
@@ -23,7 +25,7 @@ const Transaction = ({ item, actions }) => {
       </ItemImg>
       <ItemDesc>
         <h4>{catTitle}</h4>
-        <span>{`${item.date}`}</span>
+        <span>{date}</span>
       </ItemDesc>
       <ItemAmount>
         <h4>{`$${item.amount}`}</h4>

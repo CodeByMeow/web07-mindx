@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
 import useCategories from "../../hooks/useCategories";
+import MuiDatePicker from "../DatePicker";
 import {
   ChangeTransaction,
   ContentInner,
@@ -60,6 +61,13 @@ const Popup = ({ actions, selectedTrans }) => {
     });
   };
 
+  const handleDateTimeChange = (value) => {
+    setTrans({
+      ...trans,
+      date: value,
+    });
+  };
+
   const handleSelectCategory = (categoryId) => {
     setTrans({
       ...trans,
@@ -99,7 +107,7 @@ const Popup = ({ actions, selectedTrans }) => {
     dispatch(changeCurrentTransactionType(transType));
   };
 
-  const backdrop = {
+  const overlay = {
     visible: {
       opacity: 1,
       transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
@@ -113,7 +121,7 @@ const Popup = ({ actions, selectedTrans }) => {
   return (
     <OverlayWrapper
       initial="hidden"
-      variants={backdrop}
+      variants={overlay}
       animate="visible"
       exit="hidden"
     >
@@ -162,11 +170,9 @@ const Popup = ({ actions, selectedTrans }) => {
             </div>
             {error.amount && <p className="error-message">{error.amount}</p>}
             <FieldInpout>
-              <input
-                type="date"
-                value={trans.date}
-                onChange={handleInputChange}
-                name="date"
+              <MuiDatePicker
+                selectedDate={trans.date}
+                actions={{ handleDateTimeChange }}
               />
             </FieldInpout>
             <Category
