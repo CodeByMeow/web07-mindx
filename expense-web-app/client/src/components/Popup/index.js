@@ -9,6 +9,7 @@ import {
   FieldInpout,
   Nav,
   Notes,
+  OverlayWrapper,
   Row,
   SubmitBtn,
 } from "./Popup.style";
@@ -99,76 +100,101 @@ const Popup = ({ actions, selectedTrans }) => {
   };
 
   const backdrop = {
-    visible: { translateY: 0 },
-    hidden: { translateY: "100%" },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+    },
+    hidden: {
+      opacity: 0,
+      transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+    },
   };
 
   return (
-    <Row initial="hidden" variants={backdrop} animate="visible">
-      <Nav>
-        <div className="nav-inner">
-          <button
-            className="cancle"
-            onClick={() => actions.handleShowPopup(null)}
-          >
-            Cancel
-          </button>
-          <span className="current-transaction">
-            {state.currentTransactionType}
-          </span>
-        </div>
-      </Nav>
-      <ContentInner width={trans.amount.length}>
-        <form onSubmit={handleSubmit}>
-          <div className="transaction-input">
-            <div className="input">
-              <span className="currency">$</span>
-              <input
-                type="number"
-                placeholder="0"
-                onKeyDown={autoSize}
-                value={trans.amount}
-                onChange={handleInputChange}
-                step={0.01}
-                name="amount"
-                min={0}
-                ref={inputRef}
-              />
-            </div>
-            <ChangeTransaction actions={{ handleChangeTransaction }} />
-          </div>
-          {error.amount && <p className="error-message">{error.amount}</p>}
-          <FieldInpout>
-            <input
-              type="date"
-              value={trans.date}
-              onChange={handleInputChange}
-              name="date"
-            />
-          </FieldInpout>
-          <Category
-            actions={{ handleSelectCategory }}
-            selectedCat={trans.category}
-          />
-          {error.category && <p className="error-message">{error.category}</p>}
-          <Notes>
-            <textarea
-              className="notes"
-              placeholder="Note..."
-              rows="1"
-              onChange={handleInputChange}
-              name="note"
-              defaultValue={trans.note}
-            ></textarea>
-          </Notes>
-          <SubmitBtn>
-            <button type="submit" className="submit">
-              Save
+    <OverlayWrapper
+      initial="hidden"
+      variants={backdrop}
+      animate="visible"
+      exit="hidden"
+    >
+      <Row
+        initial={{ y: "100%" }}
+        animate={{
+          y: 0,
+          transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+        exit={{
+          y: "100%",
+          transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+      >
+        <Nav>
+          <div className="nav-inner">
+            <button
+              className="cancle"
+              onClick={() => actions.handleShowPopup(null)}
+            >
+              Cancel
             </button>
-          </SubmitBtn>
-        </form>
-      </ContentInner>
-    </Row>
+            <span className="current-transaction">
+              {state.currentTransactionType}
+            </span>
+          </div>
+        </Nav>
+        <ContentInner width={trans.amount.length}>
+          <form onSubmit={handleSubmit}>
+            <div className="transaction-input">
+              <div className="input">
+                <span className="currency">$</span>
+                <input
+                  type="number"
+                  placeholder="0"
+                  onKeyDown={autoSize}
+                  value={trans.amount}
+                  onChange={handleInputChange}
+                  step={0.01}
+                  name="amount"
+                  min={0}
+                  ref={inputRef}
+                />
+              </div>
+              <ChangeTransaction actions={{ handleChangeTransaction }} />
+            </div>
+            {error.amount && <p className="error-message">{error.amount}</p>}
+            <FieldInpout>
+              <input
+                type="date"
+                value={trans.date}
+                onChange={handleInputChange}
+                name="date"
+              />
+            </FieldInpout>
+            <Category
+              actions={{ handleSelectCategory }}
+              selectedCat={trans.category}
+            />
+            {error.category && (
+              <p className="error-message">{error.category}</p>
+            )}
+            <Notes>
+              <textarea
+                className="notes"
+                placeholder="Note..."
+                rows="1"
+                onChange={handleInputChange}
+                name="note"
+                defaultValue={trans.note}
+              ></textarea>
+            </Notes>
+            <SubmitBtn>
+              <button type="submit" className="submit">
+                Save
+              </button>
+            </SubmitBtn>
+          </form>
+        </ContentInner>
+      </Row>
+    </OverlayWrapper>
   );
 };
 

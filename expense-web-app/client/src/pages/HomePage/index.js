@@ -5,6 +5,7 @@ import Content from "../../components/Content";
 import History from "../../components/History";
 import Footer from "../../components/Footer";
 import Popup from "../../components/Popup";
+import { AnimatePresence } from "framer-motion";
 
 const HomePage = () => {
   const [popup, setPopup] = useState(false);
@@ -26,9 +27,11 @@ const HomePage = () => {
       <Content />
       <History actions={{ handleShowPopup }} />
       <Footer />
-      {popup && (
-        <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />
-      )}
+      <AnimatePresence>
+        {popup && (
+          <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />
+        )}
+      </AnimatePresence>
     </Container>
   );
 };

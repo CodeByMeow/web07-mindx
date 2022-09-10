@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { RiExchangeLine } from "react-icons/ri";
-export const Row = styled(motion.div)`
-  padding: 3em 2em;
-  height: 100vh;
+export const OverlayWrapper = styled(motion.div)`
   width: 100%;
+  height: 100vh;
+  background-color: #868996;
   position: fixed;
   left: 0;
   top: 0;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Row = styled(motion.div)`
+  padding: 3em 2em;
+  height: 98%;
+  width: 98%;
   background-color: #fff;
-  z-index: 1;
+  border-radius: 10px 10px 0 0;
+  margin-top: auto;
 `;
 
 export const Nav = styled.div`
@@ -42,8 +51,14 @@ export const Nav = styled.div`
 `;
 
 export const ContentInner = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
   form {
-    width: 100%;
+    margin: 0 auto;
+    width: 98%;
     height: 90%;
     position: fixed;
     left: 0;
