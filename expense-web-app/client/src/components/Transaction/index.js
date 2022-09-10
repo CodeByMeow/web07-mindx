@@ -17,7 +17,13 @@ const Transaction = ({ item, actions }) => {
   const date = moment(item.date).fromNow();
   return (
     <Item
-      animate={{ y: -10 }}
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.4,
+        ease: "easeInOut",
+      }}
+      exit={{ opacity: 0 }}
       onClick={() => actions.handleShowPopup(item, true)}
     >
       <ItemImg>
