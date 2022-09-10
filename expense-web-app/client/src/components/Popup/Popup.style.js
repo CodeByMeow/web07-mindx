@@ -98,8 +98,8 @@ export const ContentInner = styled.div`
       text-align: center;
       width: 1em;
       padding: 0;
-      -webkit-appearance: none;
       margin: 0;
+      -webkit-appearance: none;
       -moz-appearance: textfield;
     }
     .currency {
@@ -129,15 +129,9 @@ export const ChangeTransaction = ({ actions }) => {
 export const FieldInpout = styled.div`
   text-align: center;
   padding: 3em 0;
-
-  input[type="date"] {
-    outline: none;
-    font-size: 2em;
-    border: none;
-    border-bottom: 1px solid var(--gray);
-    padding: 0 1em;
-    cursor: pointer;
-    font-family: inherit;
+  .datepicker {
+    margin: 0 auto;
+    width: 100%;
   }
 `;
 

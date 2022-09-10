@@ -6,6 +6,7 @@ export const Item = styled(motion.div)`
   justify-content: space-bettween;
   align-items: center;
   border-bottom: 1px solid var(--gray);
+  cursor: pointer;
 `;
 
 export const ItemImg = styled.div`
