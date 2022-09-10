@@ -149,6 +149,10 @@ const Popup = ({ actions, selectedTrans }) => {
               className="current-transaction"
               initial={{ y: 10 }}
               animate={{ y: 0 }}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
               key={state.currentTransactionType}
             >
               {state.currentTransactionType}

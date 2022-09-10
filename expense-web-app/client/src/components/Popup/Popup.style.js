@@ -121,6 +121,7 @@ export const ChangeTransaction = ({ actions }) => {
         right: 0,
       }}
       whileHover={{ scale: 1.5, rotate: 90 }}
+      whileTap={{ scale: 1.5, rotate: 90 }}
       onClick={actions.handleChangeTransaction}
     >
       <RiExchangeLine style={{ fontSize: "3em" }} />

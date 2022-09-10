@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Item = styled.div`
+export const Item = styled(motion.div)`
   cursor: pointer;
   padding: 0.8em 0.5em;
   display: flex;

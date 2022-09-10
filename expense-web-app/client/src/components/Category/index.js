@@ -10,23 +10,23 @@ const Category = ({ actions, selectedCat }) => {
     actions.handleSelectCategory(id);
   }
 
-  const CategoryList = categories.reduce((list, item) => {
-    if (item.type === state.currentTransactionType)
-      return [
-        ...list,
-        <CategoryItem
-          key={item.id}
-          item={item}
-          actions={{ handleItemSelected }}
-          isSelect={selectedCat === item.id}
-        />,
-      ];
-    return list;
-  }, []);
+  const CategoryList = categories.filter(
+    (item) => item.type === state.currentTransactionType
+  );
 
   return (
     <Row>
-      <Select>{CategoryList}</Select>
+      <Select>
+        {CategoryList.map((item, index) => (
+          <CategoryItem
+            key={item.id}
+            item={item}
+            actions={{ handleItemSelected }}
+            isSelect={selectedCat === item.id}
+            order={index}
+          />
+        ))}
+      </Select>
     </Row>
   );
 };
