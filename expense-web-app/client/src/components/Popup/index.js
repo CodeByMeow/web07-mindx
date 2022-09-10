@@ -97,7 +97,8 @@ const Popup = ({ actions, selectedTrans }) => {
   const validate = (values) => {
     const errors = {};
     if (!values.amount) errors.amount = "Amount is required";
-    if (values.amount == 0) errors.amount = "Amount have to more than 0";
+    if (Number(values.amount) === 0)
+      errors.amount = "Amount have to more than 0";
     if (!values.category) errors.category = "Category is required";
     return errors;
   };
@@ -115,7 +116,7 @@ const Popup = ({ actions, selectedTrans }) => {
     },
     hidden: {
       opacity: 0,
-      transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+      transition: { duration: 0.8, ease: [0.36, 0.66, 0.04, 1] },
     },
   };
 

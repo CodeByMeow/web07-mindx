@@ -40,7 +40,7 @@ const updatedTransaction = (state, action) => {
   };
 };
 
-export default (state, action) => {
+export const AppReducer = (state, action) => {
   switch (action.type) {
     case SET_TRANSACTION_TYPE:
       return setTransactionType(state, action);
@@ -52,3 +52,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default AppReducer;

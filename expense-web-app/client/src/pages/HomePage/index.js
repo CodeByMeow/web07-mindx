@@ -22,17 +22,17 @@ const HomePage = () => {
   };
 
   return (
-    <AnimatePresence>
-      <Container>
-        <Header actions={{ handleShowPopup }} />
-        <Content />
-        <History actions={{ handleShowPopup }} />
-        <Footer />
+    <Container>
+      <Header actions={{ handleShowPopup }} />
+      <Content />
+      <History actions={{ handleShowPopup }} />
+      <Footer />
+      <AnimatePresence>
         {popup && (
           <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />
         )}
-      </Container>
-    </AnimatePresence>
+      </AnimatePresence>
+    </Container>
   );
 };
 
