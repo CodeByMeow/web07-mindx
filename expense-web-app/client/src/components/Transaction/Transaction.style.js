@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
 
 export const Item = styled(motion.div)`
   display: flex;
@@ -7,6 +8,7 @@ export const Item = styled(motion.div)`
   align-items: center;
   border-bottom: 1px solid var(--gray);
   cursor: pointer;
+  position: relative;
 `;
 
 export const ItemImg = styled.div`
@@ -41,3 +43,23 @@ export const ItemAmount = styled(ItemDesc)`
     object-fit: cover;
   }
 `;
+
+export const RemoveIcon = () => {
+  return (
+    <motion.div
+      initial={{ opcity: 0 }}
+      animate={{
+        opcity: 1,
+        padding: "1em",
+        background: "red",
+        borderRadius: 10,
+        marginLeft: 5,
+      }}
+      exit={{ opcity: 0 }}
+    >
+      <RemoveCircleOutlineRoundedIcon
+        style={{ fontSize: "2em", color: "#fff" }}
+      />
+    </motion.div>
+  );
+};
