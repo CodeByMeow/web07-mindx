@@ -9,6 +9,9 @@ export const Item = styled(motion.div)`
   border-bottom: 1px solid var(--gray);
   cursor: pointer;
   position: relative;
+  .remove-icon {
+    background-color: red;
+  }
 `;
 
 export const ItemImg = styled.div`
@@ -32,10 +35,11 @@ export const ItemDesc = styled.div`
 
 export const ItemAmount = styled(ItemDesc)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
   gap: 1em;
   h4 {
     text-align: right;
+    align-self: end;
   }
   img {
     width: 2.5em;
@@ -44,18 +48,19 @@ export const ItemAmount = styled(ItemDesc)`
   }
 `;
 
-export const RemoveIcon = () => {
+export const RemoveIcon = ({ handleRemoveTrans }) => {
   return (
     <motion.div
       initial={{ opcity: 0 }}
       animate={{
         opcity: 1,
         padding: "1em",
-        background: "red",
         borderRadius: 10,
         marginLeft: 5,
       }}
       exit={{ opcity: 0 }}
+      onClick={handleRemoveTrans}
+      className="remove-icon"
     >
       <RemoveCircleOutlineRoundedIcon
         style={{ fontSize: "2em", color: "#fff" }}

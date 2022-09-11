@@ -1,9 +1,11 @@
 import {
   ADD_TRANSACTION,
+  DELETE_TRANSACTION,
   SET_TRANSACTION_TYPE,
   UPDATE_TRANSACTION,
 } from "../constants/transactionActions";
 import { EXPENSES } from "../constants/transactionTypes";
+import useCategories from "../hooks/useCategories";
 
 const setTransactionType = (state, action) => {
   return { ...state, currentTransactionType: action.payload };
@@ -40,6 +42,16 @@ const updatedTransaction = (state, action) => {
   };
 };
 
+const delelteTransaction = (state, action) => {
+  const transactionsDeleted = state.transactions.filter(
+    (trans) => trans.id !== action.payload.id
+  );
+  return {
+    ...state,
+    transactions: transactionsDeleted,
+  };
+};
+
 export const AppReducer = (state, action) => {
   switch (action.type) {
     case SET_TRANSACTION_TYPE:
@@ -48,6 +60,8 @@ export const AppReducer = (state, action) => {
       return addTransaction(state, action);
     case UPDATE_TRANSACTION:
       return updatedTransaction(state, action);
+    case DELETE_TRANSACTION:
+      return delelteTransaction(state, action);
     default:
       return state;
   }

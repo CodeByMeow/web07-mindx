@@ -1,5 +1,6 @@
 import {
   ADD_TRANSACTION,
+  DELETE_TRANSACTION,
   SET_TRANSACTION_TYPE,
   UPDATE_TRANSACTION,
 } from "../constants/transactionActions";
@@ -14,5 +15,10 @@ export const addTransaction = (data) => ({
 });
 export const updateTransaction = (data) => ({
   type: UPDATE_TRANSACTION,
+  payload: data,
+});
+
+export const deleteTransaction = (data) => ({
+  type: DELETE_TRANSACTION,
   payload: data,
 });

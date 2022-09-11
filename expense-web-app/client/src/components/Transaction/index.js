@@ -37,7 +37,7 @@ const Transaction = ({ item, actions }) => {
         ease: "easeInOut",
       }}
       exit={{ opacity: 0 }}
-      onClick={() => actions.handleShowPopup(item, true)}
+      // onClick={() => actions.handleShowPopup(item, true)}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       onDrag={(_e, info) => setPosX(info.offset.x)}
@@ -53,7 +53,7 @@ const Transaction = ({ item, actions }) => {
         <h4>{`$${item.amount}`}</h4>
         <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
       </ItemAmount>
-      {remove && <RemoveIcon />}
+      {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
     </Item>
   );
 };
