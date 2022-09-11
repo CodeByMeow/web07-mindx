@@ -90,7 +90,6 @@ export const ContentInner = styled.div`
       outline: none;
       border: none;
       min-width: ${(props) => props.width + "ch"};
-      border-bottom: 3px solid var(--gray);
       display: block;
       font-size: 2em;
       text-align: center;
@@ -135,6 +134,10 @@ export const FieldInpout = styled.div`
   .datepicker {
     margin: 0 auto;
     width: 100%;
+    & input {
+      text-align: center;
+      font-size: 1.5em;
+    }
   }
 `;
 
