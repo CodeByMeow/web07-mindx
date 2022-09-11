@@ -25,9 +25,11 @@ export const Nav = styled.div`
   font-size: 1.5em;
   height: 3.5em;
   width: 100%;
+  background-color: #fff;
   .nav-inner {
     position: relative;
     height: inherit;
+    background-color: inherit;
   }
   .current-transaction {
     font-weight: 800;
@@ -55,7 +57,6 @@ export const ContentInner = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  overflow: auto;
   form {
     margin: 0 auto;
     width: 98%;
@@ -68,6 +69,7 @@ export const ContentInner = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow: hidden;
   }
   .error-message {
     color: red;
@@ -85,6 +87,7 @@ export const ContentInner = styled.div`
       justify-content: center;
       font-size: 2.5em;
       margin-left: auto;
+      background-color: #fff;
     }
     input {
       outline: none;
