@@ -66,10 +66,6 @@ export const ContentInner = styled.div`
     bottom: 0;
     padding: 0 2em;
     background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    overflow: hidden;
   }
   .error-message {
     color: red;
@@ -133,7 +129,7 @@ export const ChangeTransaction = ({ actions }) => {
 
 export const FieldInpout = styled.div`
   text-align: center;
-  padding: 3em 0;
+  padding: 1em 0;
   .datepicker {
     margin: 0 auto;
     width: 100%;
