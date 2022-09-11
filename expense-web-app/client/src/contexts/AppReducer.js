@@ -46,9 +46,13 @@ const delelteTransaction = (state, action) => {
   const transactionsDeleted = state.transactions.filter(
     (trans) => trans.id !== action.payload.id
   );
+  const sign = action.payload.type === EXPENSES ? 1 : -1;
+  let total = state.totalSpent + parseFloat(action.payload.amount) * sign;
+  total = Math.round(total * 100) / 100;
   return {
     ...state,
     transactions: transactionsDeleted,
+    totalSpent: total,
   };
 };
 

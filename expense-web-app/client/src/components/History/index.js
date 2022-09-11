@@ -15,7 +15,12 @@ const History = ({ actions }) => {
   };
   const removeTrans = (item) => {
     const transType = getTypeCate(item.category);
-    dispatch(deleteTransaction({ id: item.id, type: transType }));
+    dispatch(
+      deleteTransaction({
+        ...item,
+        type: transType,
+      })
+    );
   };
   const transList = state.transactions.map((item) => (
     <Transaction
