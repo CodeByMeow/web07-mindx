@@ -59,7 +59,10 @@ export const RemoveIcon = ({ handleRemoveTrans }) => {
         marginLeft: 5,
       }}
       exit={{ opcity: 0 }}
-      onClick={handleRemoveTrans}
+      onClick={(e) => {
+        e.stopPropagation();
+        handleRemoveTrans();
+      }}
       className="remove-icon"
     >
       <RemoveCircleOutlineRoundedIcon
