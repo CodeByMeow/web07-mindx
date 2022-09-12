@@ -33,13 +33,17 @@ export const ItemDesc = styled.div`
   }
 `;
 
-export const ItemAmount = styled(ItemDesc)`
+export const ItemAmount = styled(motion.div)`
   display: flex;
   justify-content: end;
   gap: 1em;
+  flex: 1;
+  padding: 1em 0;
   h4 {
     text-align: right;
     align-self: end;
+    font-size: 1.5em;
+    font-weight: 500;
   }
   img {
     width: 2.5em;

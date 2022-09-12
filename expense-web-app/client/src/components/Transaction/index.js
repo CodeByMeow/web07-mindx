@@ -50,7 +50,7 @@ const Transaction = ({ item, actions }) => {
         <h4>{catTitle}</h4>
         <span>{date}</span>
       </ItemDesc>
-      <ItemAmount>
+      <ItemAmount transition={{ ease: "easeInOut" }}>
         <h4>{`$${item.amount}`}</h4>
         <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
       </ItemAmount>
