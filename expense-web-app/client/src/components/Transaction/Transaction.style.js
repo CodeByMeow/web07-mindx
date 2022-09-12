@@ -51,14 +51,16 @@ export const ItemAmount = styled(ItemDesc)`
 export const RemoveIcon = ({ handleRemoveTrans }) => {
   return (
     <motion.div
-      initial={{ opcity: 0 }}
+      initial={{ opcity: 0, scale: 0.1 }}
       animate={{
         opcity: 1,
         padding: "1em",
         borderRadius: 10,
         marginLeft: 5,
+        scale: 1,
       }}
-      exit={{ opcity: 0 }}
+      exit={{ opacity: 0, scale: 0.1 }}
+      transition={{ duration: 0.4 }}
       onClick={(e) => {
         e.stopPropagation();
         handleRemoveTrans();

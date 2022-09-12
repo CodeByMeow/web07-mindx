@@ -16,6 +16,7 @@ import {
 import { EXPENSES } from "../../constants/transactionTypes";
 import { useState } from "react";
 import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const Transaction = ({ item, actions }) => {
   const [remove, setRemove] = useState(false);
@@ -53,7 +54,9 @@ const Transaction = ({ item, actions }) => {
         <h4>{`$${item.amount}`}</h4>
         <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
       </ItemAmount>
-      {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
+      <AnimatePresence>
+        {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
+      </AnimatePresence>
     </Item>
   );
 };

@@ -5,7 +5,6 @@ import {
   UPDATE_TRANSACTION,
 } from "../constants/transactionActions";
 import { EXPENSES } from "../constants/transactionTypes";
-import useCategories from "../hooks/useCategories";
 
 const setTransactionType = (state, action) => {
   return { ...state, currentTransactionType: action.payload };
