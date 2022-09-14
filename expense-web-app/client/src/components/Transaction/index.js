@@ -14,7 +14,7 @@ import {
   STATUS_IMG_PATH,
 } from "../../constants/imageSrc";
 import { EXPENSES } from "../../constants/transactionTypes";
-import { AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { useState } from "react";
 
 const Transaction = ({ item, actions }) => {
@@ -27,6 +27,7 @@ const Transaction = ({ item, actions }) => {
   const handleDrag = (_e, info) => {
     setRemove(() => (info.offset.x < 0 ? true : false));
   };
+
   return (
     <Item
       initial={{ y: 10, opacity: 0 }}
@@ -37,20 +38,22 @@ const Transaction = ({ item, actions }) => {
       dragConstraints={{ left: 0, right: 0 }}
       onDrag={handleDrag}
     >
-      <ItemImg>
-        <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
-      </ItemImg>
-      <ItemDesc>
-        <h4>{catTitle}</h4>
-        <span>{date}</span>
-      </ItemDesc>
-      <ItemAmount transition={{ ease: "easeInOut", duration: 1 }}>
-        <h4>{`$${item.amount}`}</h4>
-        <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
-      </ItemAmount>
-      <AnimatePresence>
-        {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
-      </AnimatePresence>
+      <AnimateSharedLayout>
+        <ItemImg>
+          <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
+        </ItemImg>
+        <ItemDesc>
+          <h4>{catTitle}</h4>
+          <span>{date}</span>
+        </ItemDesc>
+        <ItemAmount layout>
+          <h4>{`$${item.amount}`}</h4>
+          <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
+        </ItemAmount>
+        <AnimatePresence>
+          {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
+        </AnimatePresence>
+      </AnimateSharedLayout>
     </Item>
   );
 };
