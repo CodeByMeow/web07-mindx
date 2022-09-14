@@ -14,34 +14,28 @@ import {
   STATUS_IMG_PATH,
 } from "../../constants/imageSrc";
 import { EXPENSES } from "../../constants/transactionTypes";
+import { AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
-import { useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 
 const Transaction = ({ item, actions }) => {
-  const [remove, setRemove] = useState(false);
-  const [posX, setPosX] = useState();
   const categories = useCategories();
+  const [remove, setRemove] = useState(false);
   const cat = categories.find((category) => category.id === item.category);
   const { name: catTitle, img, type } = cat;
   const arrow = type === EXPENSES ? DECREASE_ARROW : INCREASE_ARROW;
   const date = moment(item.date).fromNow();
-  useEffect(() => {
-    setRemove(() => (posX < 0 ? true : false));
-  }, [posX]);
+  const handleDrag = (_e, info) => {
+    setRemove(() => (info.offset.x < 0 ? true : false));
+  };
   return (
     <Item
       initial={{ y: 10, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.4,
-        ease: "easeInOut",
-      }}
-      exit={{ opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.4 } }}
+      exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
       onClick={() => actions.handleShowPopup(item, true)}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
-      onDrag={(_e, info) => setPosX(info.offset.x)}
+      onDrag={handleDrag}
     >
       <ItemImg>
         <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
@@ -50,7 +44,7 @@ const Transaction = ({ item, actions }) => {
         <h4>{catTitle}</h4>
         <span>{date}</span>
       </ItemDesc>
-      <ItemAmount transition={{ ease: "easeInOut" }}>
+      <ItemAmount transition={{ ease: "easeInOut", duration: 1 }}>
         <h4>{`$${item.amount}`}</h4>
         <img src={`${STATUS_IMG_PATH}${arrow}.png`} alt={`${arrow}`} />
       </ItemAmount>

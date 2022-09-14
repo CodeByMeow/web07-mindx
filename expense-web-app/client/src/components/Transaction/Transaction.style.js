@@ -24,8 +24,8 @@ export const ItemImg = styled.div`
   }
 `;
 
-export const ItemDesc = styled.div`
-  flex: 1;
+export const ItemDesc = styled(motion.div)`
+  flex: 1 0;
   padding: 1em 0;
   h4 {
     font-size: 1.5em;
@@ -37,7 +37,7 @@ export const ItemAmount = styled(motion.div)`
   display: flex;
   justify-content: end;
   gap: 1em;
-  flex: 1;
+  flex-shink: 0;
   padding: 1em 0;
   h4 {
     text-align: right;
@@ -62,6 +62,7 @@ export const RemoveIcon = ({ handleRemoveTrans }) => {
         borderRadius: 10,
         marginLeft: 5,
         scale: 1,
+        cursor: "pointer",
       }}
       exit={{ opacity: 0, scale: 0.1 }}
       transition={{ duration: 0.4 }}
