@@ -37,6 +37,7 @@ const Transaction = ({ item, actions }) => {
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       onDrag={handleDrag}
+      layout
     >
       <AnimateSharedLayout>
         <ItemImg>

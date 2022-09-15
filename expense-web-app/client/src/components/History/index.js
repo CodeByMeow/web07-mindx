@@ -5,7 +5,7 @@ import Transaction from "../Transaction";
 import useTransaction from "../../hooks/useTransaction";
 import { deleteTransaction } from "../../contexts/GlobalActions";
 import useCategories from "../../hooks/useCategories";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 const History = ({ actions }) => {
   const [state, dispatch] = useTransaction();
@@ -33,9 +33,11 @@ const History = ({ actions }) => {
   return (
     <Container>
       <Row>
-        <AnimatePresence>
-          {transList.length > 0 ? transList : <EmptyBlock />}
-        </AnimatePresence>
+        <AnimateSharedLayout>
+          <AnimatePresence>
+            {transList.length > 0 ? transList : <EmptyBlock />}
+          </AnimatePresence>
+        </AnimateSharedLayout>
       </Row>
     </Container>
   );
