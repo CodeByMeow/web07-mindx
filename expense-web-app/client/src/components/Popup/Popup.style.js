@@ -88,11 +88,11 @@ export const ContentInner = styled.div`
     input {
       outline: none;
       border: none;
-      min-width: ${(props) => props.width + "ch"};
+      width: ${(props) => props.width + "ch"};
+      min-width: 1ch;
       display: block;
       font-size: 2em;
       text-align: center;
-      width: 1em;
       padding: 0;
       margin: 0;
       -webkit-appearance: none;
@@ -136,6 +136,7 @@ export const FieldInpout = styled.div`
     & input {
       text-align: center;
       font-size: 1.5em;
+      cursor: pointer;
     }
   }
 `;

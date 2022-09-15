@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
 import { formatDate } from "../../utils/formatDatetime";
 import useCategories from "../../hooks/useCategories";
@@ -28,7 +28,7 @@ const Popup = ({ actions, selectedTrans }) => {
     const today = new Date();
     return {
       amount: "",
-      date: formatDate(today),
+      date: today.getTime(),
       category: "",
       note: "",
       id: uuidv4(),
@@ -179,7 +179,9 @@ const Popup = ({ actions, selectedTrans }) => {
               </div>
               <ChangeTransaction actions={{ handleChangeTransaction }} />
             </div>
-            {error.amount && <p className="error-message">{error.amount}</p>}
+            <AnimatePresence>
+            {error.amount && <motion.p className="error-message" initial={{opacity: 0}} animate={{opacity:1}} exit={{ opacity: 1}}>{error.amount}</motion.p>}
+            </AnimatePresence>
             <FieldInpout>
               <MuiDatePicker
                 selectedDate={trans.date}

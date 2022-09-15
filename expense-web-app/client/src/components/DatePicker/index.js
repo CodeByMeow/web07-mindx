@@ -16,6 +16,7 @@ const MuiDatePicker = ({ selectedDate, actions }) => {
         ampm={false}
         leftArrowIcon={<KeyboardArrowLeft />}
         rightArrowIcon={<KeyboardArrowRight />}
+        inputFormat="dd/MM/yyy hh:mm:ss"
       />
     </Stack>
   );
