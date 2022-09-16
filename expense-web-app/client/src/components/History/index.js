@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 
 const History = ({ actions }) => {
   const [state] = useTransaction();
-  const trans = state.transactions;
+  const { transactions: trans, totalSpent } = state;
   const [group, setGroup] = useState({});
   const [card, setCard] = useState([]);
 
-  useEffect(() => setGroup(() => groupBy(trans, "date")), [trans]);
+  useEffect(() => setGroup(() => groupBy(trans, "date")), [trans, totalSpent]);
   useEffect(() => {
     const cards = Object.entries(group).map(([key, item]) => (
       <TransactionCard list={item} key={key} date={key} actions={actions} />
