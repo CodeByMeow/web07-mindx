@@ -7,4 +7,8 @@ export const Card = styled.div`
 
 export const CardHeader = styled.div`
   width: 100%;
+  h4 {
+    font-size: 2em;
+    font-weight: 500;
+  }
 `;

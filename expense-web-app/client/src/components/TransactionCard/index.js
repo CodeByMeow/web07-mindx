@@ -29,7 +29,10 @@ const TransactionCard = ({ list, actions, date }) => {
   ));
   return (
     <Card>
-      <CardHeader>{date}</CardHeader>
+      <CardHeader>
+        <h4>{date}</h4>
+      </CardHeader>
+
       {transItem.length > 0 && transItem}
     </Card>
   );
