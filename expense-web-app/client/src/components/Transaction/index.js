@@ -1,4 +1,5 @@
 import moment from "moment";
+import { useState } from "react";
 import {
   Item,
   ItemImg,
@@ -15,15 +16,18 @@ import {
 } from "../../constants/imageSrc";
 import { EXPENSES } from "../../constants/transactionTypes";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
-import { useState } from "react";
 
 const Transaction = ({ item, actions }) => {
   const categories = useCategories();
   const [remove, setRemove] = useState(false);
+
   const cat = categories.find((category) => category.id === item.category);
   const { name: catTitle, img, type } = cat;
+
   const arrow = type === EXPENSES ? DECREASE_ARROW : INCREASE_ARROW;
-  const date = moment(item.date).fromNow();
+
+  const date = moment(item.timestamp).fromNow();
+
   const handleDrag = (_e, info) => {
     setRemove(() => (info.offset.x < 0 ? true : false));
   };

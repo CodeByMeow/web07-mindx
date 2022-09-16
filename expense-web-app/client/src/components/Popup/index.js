@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
 import { AnimatePresence, motion } from "framer-motion";
 import { EXPENSES, INCOME } from "../../constants/transactionTypes";
-import { formatDate } from "../../utils/formatDatetime";
 import useCategories from "../../hooks/useCategories";
 import MuiDatePicker from "../DatePicker";
 import {
@@ -28,10 +28,11 @@ const Popup = ({ actions, selectedTrans }) => {
     const today = new Date();
     return {
       amount: "",
-      date: today.getTime(),
+      timestamp: today.getTime(),
       category: "",
       note: "",
       id: uuidv4(),
+      date: "",
     };
   });
   const inputRef = useRef();
@@ -65,7 +66,7 @@ const Popup = ({ actions, selectedTrans }) => {
   const handleDateTimeChange = (value) => {
     setTrans({
       ...trans,
-      date: value,
+      timestamp: value,
     });
   };
 
@@ -84,11 +85,15 @@ const Popup = ({ actions, selectedTrans }) => {
 
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmit) {
+      const data = {
+        ...trans,
+        date: moment(trans.timestamp).format("DD-MM-YYYY"),
+      };
       const hasID = state.transactions.some((item) => item.id === trans.id);
       if (hasID) {
-        dispatch(updateTransaction(trans));
+        dispatch(updateTransaction(data));
       } else {
-        dispatch(addTransaction(trans));
+        dispatch(addTransaction(data));
       }
       actions.handleShowPopup();
     }
@@ -180,11 +185,20 @@ const Popup = ({ actions, selectedTrans }) => {
               <ChangeTransaction actions={{ handleChangeTransaction }} />
             </div>
             <AnimatePresence>
-            {error.amount && <motion.p className="error-message" initial={{opacity: 0}} animate={{opacity:1}} exit={{ opacity: 1}}>{error.amount}</motion.p>}
+              {error.amount && (
+                <motion.p
+                  className="error-message"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 1 }}
+                >
+                  {error.amount}
+                </motion.p>
+              )}
             </AnimatePresence>
             <FieldInpout>
               <MuiDatePicker
-                selectedDate={trans.date}
+                selectedDate={trans.timestamp}
                 actions={{ handleDateTimeChange }}
               />
             </FieldInpout>

@@ -1,43 +1,25 @@
+import { AnimatePresence } from "framer-motion";
 import { Container } from "../../global/styles/Global.style";
 import { Row } from "./History.style";
 import EmptyBlock from "../EmptyBlock";
-import Transaction from "../Transaction";
+import TransactionCard from "../TransactionCard";
 import useTransaction from "../../hooks/useTransaction";
-import { deleteTransaction } from "../../contexts/GlobalActions";
-import useCategories from "../../hooks/useCategories";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { groupBy } from "../../utils/handleArray";
+import { useEffect, useState } from "react";
 
 const History = ({ actions }) => {
-  const [state, dispatch] = useTransaction();
-  const categorise = useCategories();
-  const getTypeCate = (categoryId) => {
-    const cat = categorise.find((item) => item.id === categoryId);
-    return cat.type;
-  };
-  const removeTrans = (item) => {
-    const transType = getTypeCate(item.category);
-    dispatch(
-      deleteTransaction({
-        ...item,
-        type: transType,
-      })
-    );
-  };
-  const transList = state.transactions.map((item) => (
-    <Transaction
-      key={item.id}
-      item={item}
-      actions={{ ...actions, removeTrans: () => removeTrans(item) }}
-    />
+  const [state] = useTransaction();
+  const [group, setGroup] = useState({});
+
+  useEffect(() => setGroup(() => groupBy(state.transactions, "date")), []);
+  const cards = Object.entries(group).map(([key, item]) => (
+    <TransactionCard list={item} key={key} date={key} actions={actions} />
   ));
+
   return (
     <Container>
       <Row>
-        <AnimateSharedLayout>
-          <AnimatePresence>
-            {transList.length > 0 ? transList : <EmptyBlock />}
-          </AnimatePresence>
-        </AnimateSharedLayout>
+        <AnimatePresence>{cards ? cards : <EmptyBlock />}</AnimatePresence>
       </Row>
     </Container>
   );
