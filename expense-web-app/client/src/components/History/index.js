@@ -9,17 +9,24 @@ import { useEffect, useState } from "react";
 
 const History = ({ actions }) => {
   const [state] = useTransaction();
+  const trans = state.transactions;
   const [group, setGroup] = useState({});
+  const [card, setCard] = useState([]);
 
-  useEffect(() => setGroup(() => groupBy(state.transactions, "date")), []);
-  const cards = Object.entries(group).map(([key, item]) => (
-    <TransactionCard list={item} key={key} date={key} actions={actions} />
-  ));
+  useEffect(() => setGroup(() => groupBy(trans, "date")), [trans]);
+  useEffect(() => {
+    const cards = Object.entries(group).map(([key, item]) => (
+      <TransactionCard list={item} key={key} date={key} actions={actions} />
+    ));
+    setCard(cards);
+  }, [group]);
 
   return (
     <Container>
       <Row>
-        <AnimatePresence>{cards ? cards : <EmptyBlock />}</AnimatePresence>
+        <AnimatePresence>
+          {card.length > 0 ? card : <EmptyBlock />}
+        </AnimatePresence>
       </Row>
     </Container>
   );

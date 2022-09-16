@@ -5,7 +5,7 @@ import useTransaction from "../../hooks/useTransaction";
 import Transaction from "../Transaction";
 
 const TransactionCard = ({ list, actions, date }) => {
-  const [dispatch] = useTransaction();
+  const [_state, dispatch] = useTransaction();
   const categories = useCategories();
   const getTypeCate = (categoryId) => {
     const cat = categories.find((item) => item.id === categoryId);
