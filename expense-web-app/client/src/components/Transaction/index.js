@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Item,
   ItemImg,
@@ -34,9 +34,20 @@ const Transaction = ({ item, actions }) => {
 
   return (
     <Item
-      initial={{ y: 5, opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 0.4 } }}
-      exit={{ opacity: 0, y: 5, transition: { duration: 0.3 } }}
+      variants={{
+        hidden: {
+          y: 5,
+          opacity: 0,
+        },
+        visible: {
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.4 },
+        },
+      }}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
       onClick={() => actions.handleShowPopup(item, true)}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}

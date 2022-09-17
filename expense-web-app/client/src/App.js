@@ -3,7 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Chart from "./pages/Chart";
+import ChartPage from "./pages/ChartPage";
 import Footer from "./components/Footer";
 import TransactionProvider from "./contexts/GlobalState";
 import CategoriesContextProvider from "./contexts/CategoriesContext";
@@ -16,7 +16,7 @@ function App() {
           <GlobalStyle />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/chart" element={<Chart />} />
+            <Route path="/chart" element={<ChartPage />} />
           </Routes>
           <Footer />
         </TransactionProvider>

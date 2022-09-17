@@ -4,7 +4,7 @@ import { deleteTransaction } from "../../contexts/GlobalActions";
 import useCategories from "../../hooks/useCategories";
 import useTransaction from "../../hooks/useTransaction";
 import Transaction from "../Transaction";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TransactionCard = ({ list, actions, date }) => {
   const [_state, dispatch] = useTransaction();
@@ -35,7 +35,7 @@ const TransactionCard = ({ list, actions, date }) => {
       })
     );
   };
-  useEffect(() => {}, []);
+
   const transItem = list.map((item) => (
     <Transaction
       key={item.id}
