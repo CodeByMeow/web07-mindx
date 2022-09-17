@@ -156,7 +156,7 @@ export const Notes = styled.div`
 `;
 
 export const SubmitBtn = styled.div`
-  padding: 1em 2em;
+  padding: 1em 0;
   .submit {
     font-size: 2em;
     background-color: var(--green);
