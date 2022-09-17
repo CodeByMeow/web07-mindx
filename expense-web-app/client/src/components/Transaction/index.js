@@ -34,9 +34,9 @@ const Transaction = ({ item, actions }) => {
 
   return (
     <Item
-      initial={{ y: 10, opacity: 0 }}
+      initial={{ y: 5, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { duration: 0.4 } }}
-      exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+      exit={{ opacity: 0, y: 5, transition: { duration: 0.3 } }}
       onClick={() => actions.handleShowPopup(item, true)}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}

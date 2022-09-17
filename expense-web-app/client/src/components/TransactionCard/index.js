@@ -44,7 +44,7 @@ const TransactionCard = ({ list, actions, date }) => {
     />
   ));
   return (
-    <Card>
+    <Card initial={{ y: 5, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
       <CardHeader>
         <Day>{dateFormat.day}</Day>
         <MonthYear>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   width: 100%;
   padding: 1em 0;
 `;
