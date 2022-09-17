@@ -6,6 +6,7 @@ import TransactionCard from "../TransactionCard";
 import useTransaction from "../../hooks/useTransaction";
 import { groupBy } from "../../utils/handleArray";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 const History = ({ actions }) => {
   const [state] = useTransaction();
@@ -13,7 +14,10 @@ const History = ({ actions }) => {
   const [card, setCard] = useState([]);
 
   useEffect(() => {
-    const group = groupBy(trans, "date");
+    const sortedTrans = trans.sort(
+      (a, b) => moment(b.timestamp) - moment(a.timestamp)
+    );
+    const group = groupBy(sortedTrans, "date");
     const cards = Object.entries(group).map(([key, item]) => (
       <TransactionCard list={item} key={key} date={key} actions={actions} />
     ));
