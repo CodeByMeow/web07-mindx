@@ -18,7 +18,7 @@ const History = ({ actions }) => {
       <TransactionCard list={item} key={key} date={key} actions={actions} />
     ));
     setCard(cards);
-  }, [trans]);
+  }, [state]);
 
   return (
     <Container>

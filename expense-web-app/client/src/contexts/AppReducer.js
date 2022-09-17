@@ -23,20 +23,20 @@ const addTransaction = (state, action) => {
 };
 
 const updatedTransaction = (state, action) => {
-  const sign = state.currentTransactionType === EXPENSES ? -1 : 1;
-  let total =
-    state.totalSpent +
-    parseFloat(action.payload.old_amount) * (sign * -1) +
-    action.payload.amount * sign;
+  const currentSign = state.currentTransactionType === EXPENSES ? -1 : 1;
+  const oldSign = action.payload.old_type === EXPENSES ? 1 : -1;
+  const oldAmount = action.payload.old_amount * oldSign;
+  const newAmount = action.payload.amount * currentSign;
+  let total = state.totalSpent + oldAmount + newAmount;
   total = Math.round(total * 100) / 100;
 
-  const { transactions } = state;
   const { id } = action.payload;
-  const idx = transactions.findIndex((item) => item.id === id);
-  transactions.splice(idx, 1, action.payload);
+  const idx = state.transactions.findIndex((item) => item.id === id);
+  state.transactions.splice(idx, 1, action.payload);
+
   return {
     ...state,
-    transactions: transactions,
+    transactions: [...state.transactions],
     totalSpent: total,
   };
 };

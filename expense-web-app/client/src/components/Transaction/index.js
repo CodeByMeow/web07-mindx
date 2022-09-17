@@ -15,7 +15,7 @@ import {
   STATUS_IMG_PATH,
 } from "../../constants/imageSrc";
 import { EXPENSES } from "../../constants/transactionTypes";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 
 const Transaction = ({ item, actions }) => {
   const categories = useCategories();
@@ -43,7 +43,7 @@ const Transaction = ({ item, actions }) => {
       onDrag={handleDrag}
       layout
     >
-      <AnimateSharedLayout>
+      <LayoutGroup>
         <ItemImg>
           <img src={`${CATEGORIES_IMG_PATH}${img}`} alt="{catTitle}" />
         </ItemImg>
@@ -58,7 +58,7 @@ const Transaction = ({ item, actions }) => {
         <AnimatePresence>
           {remove && <RemoveIcon handleRemoveTrans={actions.removeTrans} />}
         </AnimatePresence>
-      </AnimateSharedLayout>
+      </LayoutGroup>
     </Item>
   );
 };
