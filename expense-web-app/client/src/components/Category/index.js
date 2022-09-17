@@ -16,6 +16,7 @@ const Category = ({ actions, selectedCat }) => {
     setHeight(() => Math.floor(pageHeight * 0.3));
   };
   useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
