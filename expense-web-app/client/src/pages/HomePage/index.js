@@ -3,7 +3,6 @@ import { Container } from "../../global/styles/Global.style";
 import Header from "../../components/Header";
 import Content from "../../components/Content";
 import History from "../../components/History";
-import Footer from "../../components/Footer";
 import Popup from "../../components/Popup";
 import { AnimatePresence } from "framer-motion";
 import useCategories from "../../hooks/useCategories";
@@ -36,7 +35,6 @@ const HomePage = () => {
       <Header actions={{ handleShowPopup }} />
       <Content />
       <History actions={{ handleShowPopup }} />
-      <Footer />
       <AnimatePresence>
         {popup && (
           <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />

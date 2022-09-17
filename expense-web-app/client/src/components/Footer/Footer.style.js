@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -18,8 +19,12 @@ export const Nav = styled.div`
   justify-content: space-evenly;
   align-items: center;
   font-size: 2.5em;
+`;
+
+export const NavIcon = styled(NavLink)`
   color: var(--gray);
-  .active {
-    color: var(--black);
+
+  &.active {
+    color: var(--black) !important;
   }
 `;
