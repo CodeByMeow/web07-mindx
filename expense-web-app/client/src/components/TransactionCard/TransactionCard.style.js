@@ -8,6 +8,7 @@ export const Card = styled.div`
 export const CardHeader = styled.div`
   width: 100%;
   border-left: 2px solid green;
+  border-bottom: 1px solid var(--light-green);
   display: flex;
   gap: 0.5em;
   align-items: center;

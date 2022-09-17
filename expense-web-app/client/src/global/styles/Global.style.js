@@ -20,6 +20,7 @@ body {
   --aqua:#ADCCB6;
   --grown:#4B3430;
   --green:#7D8A5F;
+  --light-green: #E3EDE5;
   --content-height:16em;
   --header-height:4em;
 }

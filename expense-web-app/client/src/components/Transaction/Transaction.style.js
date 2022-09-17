@@ -6,7 +6,7 @@ export const Item = styled(motion.div)`
   display: flex;
   justify-content: space-bettween;
   align-items: center;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   position: relative;
   .remove-icon {

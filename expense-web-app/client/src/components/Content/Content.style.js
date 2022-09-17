@@ -16,7 +16,7 @@ export const OverView = styled.div`
   text-aligh: center;
   display: flex;
   justify-content: center;
-  font-size: 6em;
+  font-size: 5em;
   & .currency {
     font-size: 0.6em;
     color: var(--gray-dark);
