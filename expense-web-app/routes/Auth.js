@@ -7,6 +7,7 @@ const { JWT_SECRET_KEY, JWT_EXPIRES_TIME, DEFAULT_USERNAME, DEFAULT_PASSWORD } =
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body);
   if (!username || !password) {
     return res.status(400).json({
       msg: "Missing some required keys",
