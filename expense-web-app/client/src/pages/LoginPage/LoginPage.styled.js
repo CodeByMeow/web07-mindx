@@ -5,7 +5,6 @@ export const Row = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 `;
 
 export const Form = styled.form`
@@ -27,6 +26,7 @@ export const Form = styled.form`
       padding: 0.4em 0.8em;
       font-size: 1.2em;
       width: 24rem;
+      flex: 1;
     }
   }
 `;
