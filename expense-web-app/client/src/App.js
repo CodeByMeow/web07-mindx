@@ -1,7 +1,7 @@
-import { GlobalStyle } from "./global/styles/Global.style";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { Routes, Route } from "react-router-dom";
+import { GlobalStyle } from "./global/styles/Global.style";
 import HomePage from "./pages/HomePage";
 import ChartPage from "./pages/ChartPage";
 import LoginPage from "./pages/LoginPage";
@@ -26,5 +26,4 @@ function App() {
     </LocalizationProvider>
   );
 }
-
 export default App;

@@ -7,6 +7,7 @@ export const Container = styled.div`
   bottom: 0;
   left: 0;
   border-top: 1px solid var(--gray);
+  z-index: 1;
 `;
 
 export const Row = styled.div`

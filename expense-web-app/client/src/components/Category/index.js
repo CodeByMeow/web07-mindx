@@ -2,7 +2,6 @@ import { Row, Select } from "./Category.style";
 import CategoryItem from "../CategoryItem";
 import useTransaction from "../../hooks/useTransaction";
 import useCategories from "../../hooks/useCategories";
-import { useEffect, useState } from "react";
 
 const Category = ({ actions, selectedCat }) => {
   const [state] = useTransaction();
@@ -10,16 +9,6 @@ const Category = ({ actions, selectedCat }) => {
   function handleItemSelected(id) {
     actions.handleSelectCategory(id);
   }
-  const [height, setHeight] = useState();
-  const handleResize = () => {
-    const pageHeight = window.innerHeight;
-    setHeight(() => Math.floor(pageHeight * 0.3));
-  };
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const CategoryList = categories.filter(
     (item) => item.type === state.currentTransactionType
@@ -27,7 +16,7 @@ const Category = ({ actions, selectedCat }) => {
 
   return (
     <Row>
-      <Select height={height}>
+      <Select>
         {CategoryList.map((item, index) => (
           <CategoryItem
             key={item.id}

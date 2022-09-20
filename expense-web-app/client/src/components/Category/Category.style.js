@@ -5,8 +5,7 @@ export const Row = styled.div`
 `;
 
 export const Select = styled.div`
-  height: ${(props) => `${props.height}px`};
-  max-height: 24em;
+  height: 20em;
   overflow-y: scroll;
   border-bottom: 1px solid var(--gray);
 `;

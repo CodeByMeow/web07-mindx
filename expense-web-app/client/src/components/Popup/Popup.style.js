@@ -10,6 +10,7 @@ export const OverlayWrapper = styled(motion.div)`
   top: 0;
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
 export const Row = styled(motion.div)`

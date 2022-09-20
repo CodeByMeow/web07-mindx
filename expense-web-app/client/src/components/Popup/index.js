@@ -24,6 +24,7 @@ import {
 import Category from "../../components/Category";
 
 const Popup = ({ actions, selectedTrans }) => {
+  const keyboardDidShow = useSmallHeight();
   const [trans, setTrans] = useState(() => {
     const today = new Date();
     return {

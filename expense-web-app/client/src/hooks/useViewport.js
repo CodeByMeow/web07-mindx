@@ -12,19 +12,14 @@ const useViewport = () => {
 
   useEffect(() => {
     if (window) {
+      handleWindowResize();
       window.addEventListener("resize", handleWindowResize);
-      window.addEventListener(
-        "orientationchange",
-        handleWindowOrientationChange
-      );
+      window.addEventListener("orientationchange", handleWindowResize);
     }
 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
-      window.removeEventListener(
-        "orientationchange",
-        handleWindowOrientationChange
-      );
+      window.removeEventListener("orientationchange", handleWindowResize);
     };
   }, []);
 
