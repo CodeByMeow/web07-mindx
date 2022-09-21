@@ -29,7 +29,7 @@ import useBoolean from "../../hooks/useBoolean";
 
 const Popup = ({ actions, selectedTrans }) => {
   const keyboardDidShow = useSmallHeight();
-  const { value: noteFocus, setTrue, setFalse } = useBoolean(false);
+  const { value, setTrue, setFalse } = useBoolean(false);
   const [trans, setTrans] = useState(() => {
     const today = new Date();
     return {
@@ -41,6 +41,7 @@ const Popup = ({ actions, selectedTrans }) => {
       date: "",
     };
   });
+  const inputRef = useRef();
   const [state, dispatch] = useTransaction();
   const [error, setError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -184,6 +185,7 @@ const Popup = ({ actions, selectedTrans }) => {
                   step={0.01}
                   name="amount"
                   min={0}
+                  ref={inputRef}
                 />
               </div>
               <ChangeTransaction actions={{ handleChangeTransaction }} />
@@ -213,7 +215,7 @@ const Popup = ({ actions, selectedTrans }) => {
             {error.category && (
               <p className="error-message">{error.category}</p>
             )}
-            <Notes keyboardDidShow={keyboardDidShow} focus={noteFocus}>
+            <Notes keyboardDidShow={keyboardDidShow}>
               <textarea
                 className="notes"
                 placeholder="Note..."
@@ -221,8 +223,6 @@ const Popup = ({ actions, selectedTrans }) => {
                 onChange={handleInputChange}
                 name="note"
                 defaultValue={trans.note}
-                onFocus={setTrue}
-                onBlur={setFalse}
               ></textarea>
             </Notes>
             <SubmitBtn>

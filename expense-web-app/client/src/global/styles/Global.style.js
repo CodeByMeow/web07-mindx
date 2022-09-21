@@ -23,6 +23,7 @@ body {
   --light-green: #E3EDE5;
   --content-height:16em;
   --header-height:4em;
+  --radius: 17.544%;
 }
 `;
 

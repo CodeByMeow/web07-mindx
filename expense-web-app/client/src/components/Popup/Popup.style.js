@@ -143,6 +143,7 @@ export const FieldInpout = styled.div`
 `;
 
 export const Notes = styled.div`
+  background-color: #fff;
   .notes {
     font-size: 1.5em;
     font-weight: 300;
@@ -153,7 +154,23 @@ export const Notes = styled.div`
     border-bottom: 1px solid var(--gray);
     outline: none;
     font-family: inherit;
+    background-color: #fff;
   }
+
+  ${({ keyboardDidShow, focus }) =>
+    keyboardDidShow &&
+    focus &&
+    `
+    width: calc(100% - 4em);
+    position: fixed;
+    bottom: 0;
+    left: 2em;
+    padding-bottom: 1em;
+    .notes {
+    border: 1px solid var(--gray);
+    border-radius: 0.9rem;
+  }
+  `}
 `;
 
 export const SubmitBtn = styled.div`
