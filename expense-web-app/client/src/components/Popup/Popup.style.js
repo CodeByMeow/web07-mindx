@@ -165,7 +165,7 @@ export const Notes = styled.div`
     position: fixed;
     bottom: 0;
     left: 2em;
-    padding-bottom: 1em;
+    padding-bottom: 6em;
     .notes {
     border: 1px solid var(--gray);
     border-radius: 0.9rem;
