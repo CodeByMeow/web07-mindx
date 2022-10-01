@@ -1,0 +1,12 @@
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import AuthCtx from "../../contexts/Auth/AuthContext";
+
+const PrivateRoute = ({ component: Component }) => {
+  const { state } = useContext(AuthCtx);
+  const { isAuthenticated } = state;
+  if (isAuthenticated) return <Component />;
+  return <Navigate to="/login" />;
+};
+
+export default PrivateRoute;

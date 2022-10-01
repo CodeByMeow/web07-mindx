@@ -11,15 +11,15 @@ export const Container = styled.div`
 `;
 
 export const Row = styled.div`
-  padding: 3em 2em;
+  padding: 3rem 2rem;
   background-color: #fff;
 `;
 
 export const Nav = styled.div`
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  font-size: 2.5em;
+  align-itrems: center;
+  font-size: 2.5rem;
 `;
 
 export const NavIcon = styled(NavLink)`

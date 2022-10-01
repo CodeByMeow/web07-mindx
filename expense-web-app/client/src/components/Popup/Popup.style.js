@@ -14,7 +14,7 @@ export const OverlayWrapper = styled(motion.div)`
 `;
 
 export const Row = styled(motion.div)`
-  padding: 3em 2em;
+  padding: 3rem 2rem;
   height: 98%;
   width: 98%;
   background-color: #fff;
@@ -23,8 +23,8 @@ export const Row = styled(motion.div)`
 `;
 
 export const Nav = styled.div`
-  font-size: 1.5em;
-  height: 3.5em;
+  font-size: 1.5rem;
+  height: 3.5rem;
   width: 100%;
   background-color: #fff;
   .nav-inner {
@@ -65,22 +65,22 @@ export const ContentInner = styled.div`
     position: fixed;
     left: 0;
     bottom: 0;
-    padding: 0 2em;
+    padding: 0 2rem;
     background-color: #fff;
   }
   .error-message {
     color: red;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     text-align: center;
     :first-letter {
       text-transform: capitalize;
     }
   }
   .transaction-input {
-    position: relative;
+    position: rlative;
     .input {
       display: flex;
-      align-items: center;
+      align-itrems: center;
       justify-content: center;
       font-size: 2.5em;
       margin-left: auto;
@@ -123,20 +123,20 @@ export const ChangeTransaction = ({ actions }) => {
       whileTap={{ scale: 1.5, rotate: 90 }}
       onClick={actions.handleChangeTransaction}
     >
-      <RiExchangeLine style={{ fontSize: "3em" }} />
+      <RiExchangeLine style={{ fontSize: "3rem" }} />
     </motion.span>
   );
 };
 
 export const FieldInpout = styled.div`
   text-align: center;
-  padding: 1em 0;
+  padding: 1rem 0;
   .datepicker {
     margin: 0 auto;
     width: 100%;
     & input {
       text-align: center;
-      font-size: 1.5em;
+      font-size: 1.5rem;
       cursor: pointer;
     }
   }
@@ -145,9 +145,9 @@ export const FieldInpout = styled.div`
 export const Notes = styled.div`
   background-color: #fff;
   .notes {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 300;
-    padding: 1em;
+    padding: 1rem;
     width: 100%;
     resize: none;
     border: none;
@@ -161,26 +161,26 @@ export const Notes = styled.div`
     keyboardDidShow &&
     focus &&
     `
-    width: calc(100% - 4em);
+    width: calc(100% - 4rem);
     position: fixed;
     bottom: 0;
-    left: 2em;
-    padding-bottom: 6em;
+    left: 2rem;
+    padding-bottom: 6rem;
     .notes {
     border: 1px solid var(--gray);
-    border-radius: 0.9rem;
+    border-radius: 0.9rrem;
   }
   `}
 `;
 
 export const SubmitBtn = styled.div`
-  padding: 1em 0;
+  padding: 1rem 0;
   .submit {
-    font-size: 2em;
+    font-size: 2rem;
     background-color: var(--green);
-    padding: 0.8em;
+    padding: 0.8rem;
     width: 100%;
-    border-radius: 1.125em;
+    border-radius: 1.125rem;
     outline: none;
     border: none;
     cursor: pointer;

@@ -9,14 +9,14 @@ export const Item = styled(motion.div)`
   background-color: ${(props) => props.bg};
   color: ${(props) => props.color};
   h5 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 300;
     padding: 0.8em;
   }
 `;
 
 export const Image = styled.img`
-  width: 4em;
-  height: 4em;
+  width: 4rem;
+  height: 4rem;
   object-fit: cover;
 `;

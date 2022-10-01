@@ -4,7 +4,6 @@ const router = express.Router();
 
 const { JWT_SECRET_KEY, JWT_EXPIRES_TIME, DEFAULT_USERNAME, DEFAULT_PASSWORD } =
   process.env;
-const status = require("../config/statusConst");
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
@@ -12,7 +11,6 @@ router.post("/login", (req, res) => {
   if (!username || !password) {
     return res.status(400).json({
       msg: "Missing some required keys",
-      status: status.MISSING,
     });
   }
 
@@ -29,13 +27,12 @@ router.post("/login", (req, res) => {
     return res.json({
       msg: "Login sucessfully",
       token,
-      status: status.OK,
+      isAuthenticated: true,
     });
   }
 
-  return res.json({
+  return res.status(400).json({
     msg: "Username or password is incorrect",
-    status: status.FAILED,
   });
 });
 
