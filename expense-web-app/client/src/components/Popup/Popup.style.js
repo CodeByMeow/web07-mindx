@@ -80,7 +80,7 @@ export const ContentInner = styled.div`
     position: rlative;
     .input {
       display: flex;
-      align-itrems: center;
+      align-items: center;
       justify-content: center;
       font-size: 2.5em;
       margin-left: auto;

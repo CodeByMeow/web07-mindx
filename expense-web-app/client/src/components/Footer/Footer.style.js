@@ -18,7 +18,7 @@ export const Row = styled.div`
 export const Nav = styled.div`
   display: flex;
   justify-content: space-evenly;
-  align-itrems: center;
+  align-items: center;
   font-size: 2.5rem;
 `;
 
