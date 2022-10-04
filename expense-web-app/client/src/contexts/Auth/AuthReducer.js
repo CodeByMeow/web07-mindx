@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from "./AuthType";
+import { LOGIN, LOGOUT, REGISTER } from "./AuthType";
 const authReducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
@@ -16,6 +16,15 @@ const authReducer = (state, action) => {
         ...state,
         token: null,
         isAuthenticated: false,
+      };
+    case REGISTER:
+      if (action.payload.token) {
+        localStorage.setItem("token", action.payload.token);
+      }
+      return {
+        ...state,
+        token: action.payload.token,
+        isAuthenticated: !!action.payload.token,
       };
 
     default:

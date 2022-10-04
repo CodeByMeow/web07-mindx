@@ -1,8 +1,8 @@
 import axios from "axios";
-import { LOGIN_URL } from "../constants/api";
+import { LOGIN_URL, REGISTER_URL } from "../constants/api";
 
 const authServices = {
-  login: function (payload) {
+  login: (payload) => {
     return axios({
       method: "post",
       url: LOGIN_URL,
