@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "../../global/styles/Global.style";
@@ -38,6 +39,7 @@ const LoginPage = () => {
       <Row>
         <h1>Login</h1>
         <LoginForm onSubmit={onSubmit} error={error} isLoading={isLoading} />
+        <Link to="/register">Don't have account? Register here</Link>
       </Row>
     </Container>
   );

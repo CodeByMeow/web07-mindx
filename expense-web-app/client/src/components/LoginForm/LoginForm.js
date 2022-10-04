@@ -1,4 +1,5 @@
 import React from "react";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Form, Button, Typography, Input } from "antd";
 
 const { Text } = Typography;
@@ -21,7 +22,6 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
       autoComplete="off"
     >
       <Form.Item
-        label="Username"
         name="username"
         rules={[
           {
@@ -30,11 +30,10 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
           },
         ]}
       >
-        <Input />
+        <Input prefix={<UserOutlined />} placeholder="Username" />
       </Form.Item>
 
       <Form.Item
-        label="Password"
         name="password"
         rules={[
           {
@@ -43,7 +42,7 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password prefix={<LockOutlined />} placeholder="Password" />
       </Form.Item>
       {error && (
         <Text type="danger" style={{ textAlign: "center" }}>
