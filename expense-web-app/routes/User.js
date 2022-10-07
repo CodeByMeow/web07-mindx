@@ -1,13 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const { db } = require("../config/db");
 
-router.get("/", (req, res) => {
-  const users = db.users;
+const userController = require("../controllers/userController");
+
+router.get("/", async (_req, res) => {
+  const listUser = await userController.index();
   return res.json({
     msg: "list users",
-    data: users,
+    data: listUser,
+  });
+});
+
+router.post("/", async (req, res) => {
+  const { username, password } = req.body;
+  const inserted = await userController.create({ username, password });
+
+  return res.status(201).json({
+    msg: "new user was created",
+    data: inserted,
   });
 });
 
