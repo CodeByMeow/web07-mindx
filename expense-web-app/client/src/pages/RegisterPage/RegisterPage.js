@@ -1,4 +1,5 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 import { Button, Form, Input, Typography } from "antd";
 import { Container } from "../../global/styles/Global.style";
 import { Row } from "./RegisterPage.styled";
@@ -29,9 +30,10 @@ const RegisterPage = () => {
   };
   if (userId)
     return (
-      <h2 style={{ textAlign: "center", color: "var(--green)" }}>
-        Register successful
-      </h2>
+      <div style={{ textAlign: "center" }}>
+        <h2 style={{ color: "var(--green)" }}>Register successful</h2>
+        <Link to="/login">Login now</Link>
+      </div>
     );
 
   return (
