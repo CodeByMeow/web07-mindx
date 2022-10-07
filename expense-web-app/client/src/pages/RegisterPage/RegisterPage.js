@@ -9,22 +9,31 @@ const { Text } = Typography;
 
 const RegisterPage = () => {
   const [error, setError] = useState(null);
+  const [userId, setUserId] = useState(null);
   const {
     value: isLoading,
     setTrue: setLoading,
     setFalse: setNoLoading,
   } = useBoolean(false);
+
   const onFinish = async (values) => {
-    console.log(values);
     try {
       setLoading();
       const res = await userService.create(values);
-      //Dispatch here
+      setUserId(res.data);
+      setNoLoading();
     } catch (error) {
       setError(error.response.data.msg);
       setNoLoading();
     }
   };
+  if (userId)
+    return (
+      <h2 style={{ textAlign: "center", color: "var(--green)" }}>
+        Register successful
+      </h2>
+    );
+
   return (
     <Container>
       <Row>
