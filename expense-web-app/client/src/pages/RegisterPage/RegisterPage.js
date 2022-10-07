@@ -1,12 +1,13 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import { Container } from "../../global/styles/Global.style";
 import { Row } from "./RegisterPage.styled";
 import userService from "../../services/userService";
 import { useState } from "react";
 import useBoolean from "../../hooks/useBoolean";
+const { Text } = Typography;
 
-const RegisterPage = ({ loading }) => {
+const RegisterPage = () => {
   const [error, setError] = useState(null);
   const {
     value: isLoading,
@@ -16,8 +17,8 @@ const RegisterPage = ({ loading }) => {
   const onFinish = async (values) => {
     console.log(values);
     try {
-      const res = await userService.create(values);
       setLoading();
+      const res = await userService.create(values);
       //Dispatch here
     } catch (error) {
       setError(error.response.data.msg);
@@ -80,12 +81,18 @@ const RegisterPage = ({ loading }) => {
               placeholder="Confirm your password"
             />
           </Form.Item>
+          {error && (
+            <Form.Item style={{ textAlign: "center", width: "100%" }}>
+              <Text type="danger">{error}</Text>
+            </Form.Item>
+          )}
+
           <Form.Item style={{ textAlign: "center" }}>
             <Button
               type="primary"
               htmlType="submit"
               shape="round"
-              loading={loading}
+              loading={isLoading}
               style={{ width: "100%" }}
             >
               Register
