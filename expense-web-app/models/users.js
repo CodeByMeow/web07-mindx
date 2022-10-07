@@ -1,7 +1,7 @@
 const { db } = require("../config/db");
 module.exports = {
-  list: async () => {
-    return await db.users.find({}).toArray();
+  getUser: async (query = {}) => {
+    return await db.users.find(query).toArray();
   },
   create: async ({ username, password }) => {
     return await db.users.insertOne({ username, password });

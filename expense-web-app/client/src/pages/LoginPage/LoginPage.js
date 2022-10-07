@@ -23,14 +23,12 @@ const LoginPage = () => {
     try {
       setLoading();
       const resData = await authServices.login(data);
-      console.log(resData);
       const loginAction = actionCreator(LOGIN, resData.data);
       dispatch(loginAction);
       setNoLoading();
       navigate("/");
     } catch (error) {
       setError(error.response.data.msg);
-      console.log(error);
       setNoLoading();
     }
   };

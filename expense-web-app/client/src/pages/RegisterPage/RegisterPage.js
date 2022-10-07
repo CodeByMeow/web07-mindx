@@ -2,9 +2,27 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import { Container } from "../../global/styles/Global.style";
 import { Row } from "./RegisterPage.styled";
+import userService from "../../services/userService";
+import { useState } from "react";
+import useBoolean from "../../hooks/useBoolean";
+
 const RegisterPage = ({ loading }) => {
-  const onFinish = (values) => {
+  const [error, setError] = useState(null);
+  const {
+    value: isLoading,
+    setTrue: setLoading,
+    setFalse: setNoLoading,
+  } = useBoolean(false);
+  const onFinish = async (values) => {
     console.log(values);
+    try {
+      const res = await userService.create(values);
+      setLoading();
+      //Dispatch here
+    } catch (error) {
+      setError(error.response.data.msg);
+      setNoLoading();
+    }
   };
   return (
     <Container>

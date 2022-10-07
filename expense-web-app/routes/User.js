@@ -13,11 +13,14 @@ router.get("/", async (_req, res) => {
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
-  const inserted = await userController.create({ username, password });
+  const dbRes = await userController.create({ username, password });
+  if (dbRes.error) {
+    return res.status(400).json(dbRes);
+  }
 
   return res.status(201).json({
     msg: "new user was created",
-    data: inserted,
+    data: dbRes,
   });
 });
 
