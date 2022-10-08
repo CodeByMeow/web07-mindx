@@ -13,6 +13,7 @@ const connectToMongo = async () => {
 
   const database = client.db(MONGODB_DBNAME);
   db.users = database.collection("users");
+  db.categories = database.collection("categories");
 };
 
 module.exports = {

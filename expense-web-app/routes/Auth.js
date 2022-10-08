@@ -2,37 +2,33 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const { JWT_SECRET_KEY, JWT_EXPIRES_TIME, DEFAULT_USERNAME, DEFAULT_PASSWORD } =
-  process.env;
+const {
+  userController,
+  checkMissing,
+  correctPassword,
+} = require("../controllers/userController");
+const { JWT_SECRET_KEY, JWT_EXPIRES_TIME } = process.env;
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
-  if (!username || !password) {
+  if (checkMissing(username, password))
     return res.status(400).json({
       msg: "Missing some required keys",
     });
-  }
 
-  const data = {
-    fullName: "Katinbox",
-    role: "admin",
-  };
+  const user = await userController.getByUsername(username);
+  if (!user) return res.status(400).json({ msg: `${username} not existed` });
+  if (!correctPassword(password, user.password))
+    return res.status(400).json({ msg: "username or password incorrect" });
 
-  if (username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
-    const token = jwt.sign(data, JWT_SECRET_KEY, {
-      expiresIn: JWT_EXPIRES_TIME,
-    });
+  const token = jwt.sign(user, JWT_SECRET_KEY, {
+    expiresIn: JWT_EXPIRES_TIME,
+  });
 
-    return res.json({
-      msg: "Login sucessfully",
-      token,
-      isAuthenticated: true,
-    });
-  }
-
-  return res.status(400).json({
-    msg: "Username or password is incorrect",
+  return res.json({
+    msg: "Login sucessfully",
+    token,
+    isAuthenticated: true,
   });
 });
 

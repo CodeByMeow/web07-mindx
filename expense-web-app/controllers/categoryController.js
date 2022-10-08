@@ -1,10 +1,7 @@
-const mockData = require("../config/data");
-
-const getAllCategories = () => {
-  const responseData = mockData.categories;
-  return responseData;
-};
+const category = require("../models/categories");
 
 module.exports = {
-  getAllCategories,
+  index: async () => {
+    return await category.index();
+  },
 };

@@ -3,7 +3,7 @@ const user = require("../models/users");
 
 const userController = {
   index: async () => {
-    return await user.getUser();
+    return await user.index();
   },
   create: async ({ username, password }) => {
     if (checkMissing(username, password))
@@ -16,6 +16,9 @@ const userController = {
 
     return insertedId;
   },
+  getByUsername: async (username) => {
+    return await user.getOne({ username });
+  },
 };
 
 function checkMissing(...args) {
@@ -23,8 +26,7 @@ function checkMissing(...args) {
 }
 
 async function isExisted(username) {
-  const rs = await user.getUser({ username: username });
-  return rs.length > 0;
+  return await user.getOne({ username });
 }
 
 function hashPassword(password) {
@@ -32,4 +34,12 @@ function hashPassword(password) {
   return bcrypt.hashSync(password, salt);
 }
 
-module.exports = userController;
+function correctPassword(password, hash) {
+  return bcrypt.compareSync(password, hash);
+}
+
+module.exports = {
+  userController,
+  checkMissing,
+  correctPassword,
+};
