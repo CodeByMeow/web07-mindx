@@ -12,7 +12,7 @@ module.exports = {
     const auth = await authenticate(username, password);
     if (auth.error) return auth;
 
-    const token = jwt.sign(auth.data.user, JWT_SECRET_KEY, {
+    const token = jwt.sign(auth.data, JWT_SECRET_KEY, {
       expiresIn: JWT_EXPIRES_TIME,
     });
 
@@ -31,7 +31,11 @@ async function authenticate(username, password) {
   if (!correctPassword(password, user.password))
     return message("username or password incorrect", true);
 
-  return message("Login sucessfully", false, { user });
+  const data = {
+    username,
+  };
+
+  return message("Login sucessfully", false, data);
 }
 
 function message(content = "", error = false, data = {}) {
