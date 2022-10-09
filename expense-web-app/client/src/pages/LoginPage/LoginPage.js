@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container } from "../../global/styles/Global.style";
+
+import useBoolean from "../../hooks/useBoolean";
+
 import LoginForm from "../../components/LoginForm/LoginForm";
-import { Row } from "./LoginPage.styled";
+import PageContainer from "../../components/PageContainer/PageContainer";
 import authServices from "../../services/authServices";
 import AuthCtx from "../../contexts/Auth/AuthContext";
 import actionCreator from "../../utils/actionCreator";
+import { Row } from "./LoginPage.styled";
 import { LOGIN } from "../../contexts/Auth/AuthType";
-import useBoolean from "../../hooks/useBoolean";
 
 const LoginPage = () => {
   const { dispatch } = useContext(AuthCtx);
@@ -33,13 +35,13 @@ const LoginPage = () => {
     }
   };
   return (
-    <Container>
+    <PageContainer hasFooter={false}>
       <Row>
         <h1>Login</h1>
         <LoginForm onSubmit={onSubmit} error={error} isLoading={isLoading} />
         <Link to="/register">Don't have account? Register here</Link>
       </Row>
-    </Container>
+    </PageContainer>
   );
 };
 

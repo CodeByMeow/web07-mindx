@@ -1,8 +1,7 @@
 const { MongoClient } = require("mongodb");
 
-const PORT = process.env.MONGODB_PORT;
 const MONGODB_DBNAME = process.env.MONGODB_DBNAME;
-const MONGODB_URI = `mongodb://127.0.0.1:${PORT}`;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const client = new MongoClient(MONGODB_URI);
 

@@ -6,30 +6,34 @@ import HomePage from "./pages/HomePage";
 import ChartPage from "./pages/ChartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import Footer from "./components/Footer";
 import TransactionProvider from "./contexts/GlobalState";
 import CategoriesContextProvider from "./contexts/CategoriesContext";
 import AuthState from "./contexts/Auth/AuthState";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <CategoriesContextProvider>
-        <TransactionProvider>
-          <GlobalStyle />
-          <AuthState>
-            <Routes>
-              <Route path="/" element={<PrivateRoute component={HomePage} />} />
-              <Route path="/chart" element={<ChartPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-            </Routes>
-          </AuthState>
-          <Footer />
-        </TransactionProvider>
-      </CategoriesContextProvider>
-    </LocalizationProvider>
+    <HelmetProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <CategoriesContextProvider>
+          <TransactionProvider>
+            <GlobalStyle />
+            <AuthState>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<PrivateRoute component={HomePage} />}
+                />
+                <Route path="/chart" element={<ChartPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+              </Routes>
+            </AuthState>
+          </TransactionProvider>
+        </CategoriesContextProvider>
+      </LocalizationProvider>
+    </HelmetProvider>
   );
 }
 export default App;

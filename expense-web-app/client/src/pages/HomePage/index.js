@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Container } from "../../global/styles/Global.style";
+import { AnimatePresence } from "framer-motion";
+import PageContainer from "../../components/PageContainer/PageContainer";
 import Header from "../../components/Header";
 import Content from "../../components/Content";
 import History from "../../components/History";
 import Popup from "../../components/Popup";
-import { AnimatePresence } from "framer-motion";
 import useCategories from "../../hooks/useCategories";
 
 const HomePage = () => {
@@ -31,7 +31,7 @@ const HomePage = () => {
   };
 
   return (
-    <Container>
+    <PageContainer>
       <Header actions={{ handleShowPopup }} />
       <Content />
       <History actions={{ handleShowPopup }} />
@@ -40,7 +40,7 @@ const HomePage = () => {
           <Popup actions={{ handleShowPopup }} selectedTrans={selectedTrans} />
         )}
       </AnimatePresence>
-    </Container>
+    </PageContainer>
   );
 };
 
