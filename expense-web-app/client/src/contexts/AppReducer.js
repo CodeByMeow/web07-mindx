@@ -27,6 +27,7 @@ const updatedTransaction = (state, action) => {
   const oldSign = action.payload.old_type === EXPENSES ? 1 : -1;
   const oldAmount = action.payload.old_amount * oldSign;
   const newAmount = action.payload.amount * currentSign;
+
   let total = state.totalSpent + oldAmount + newAmount;
   total = Math.round(total * 100) / 100;
 
@@ -48,6 +49,7 @@ const delelteTransaction = (state, action) => {
   const sign = action.payload.type === EXPENSES ? 1 : -1;
   let total = state.totalSpent + parseFloat(action.payload.amount) * sign;
   total = Math.round(total * 100) / 100;
+
   return {
     ...state,
     transactions: transactionsDeleted,
@@ -59,12 +61,16 @@ export const AppReducer = (state, action) => {
   switch (action.type) {
     case SET_TRANSACTION_TYPE:
       return setTransactionType(state, action);
+
     case ADD_TRANSACTION:
       return addTransaction(state, action);
+
     case UPDATE_TRANSACTION:
       return updatedTransaction(state, action);
+
     case DELETE_TRANSACTION:
       return delelteTransaction(state, action);
+
     default:
       return state;
   }
