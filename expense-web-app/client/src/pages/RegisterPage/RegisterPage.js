@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, Input, Typography } from "antd";
 import { Container } from "../../global/styles/Global.style";
 import { Row } from "./RegisterPage.styled";
-import userService from "../../services/userService";
+import userServices from "../../services/userServices";
 import { useState } from "react";
 import useBoolean from "../../hooks/useBoolean";
 const { Text } = Typography;
@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const onFinish = async (values) => {
     try {
       setLoading();
-      const res = await userService.create(values);
+      const res = await userServices.create(values);
       setUserId(res.data);
       setNoLoading();
     } catch (error) {

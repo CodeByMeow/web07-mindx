@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { ObjectId } = require("mongodb");
 const user = require("../models/users");
 
 const userController = {
@@ -19,10 +20,16 @@ const userController = {
   getByUsername: async (username) => {
     return await user.getOne({ username });
   },
+
+  getById: async (id) => {
+    return await user.getOne({ _id: ObjectId(id) });
+  },
 };
 
 function checkMissing(...args) {
-  return args.some((item) => !item);
+  return args.some(function (item) {
+    return !item;
+  });
 }
 
 async function isExisted(username) {

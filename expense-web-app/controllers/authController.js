@@ -20,22 +20,20 @@ module.exports = {
   },
 };
 
-async function authenticate(username, password) {
-  if (checkMissing(username, password))
+async function authenticate(username, pwd) {
+  if (checkMissing(username, pwd))
     return message("missing some required keys", true);
 
   const user = await userController.getByUsername(username);
 
   if (!user) return message(`${username} not existed`, true);
 
-  if (!correctPassword(password, user.password))
+  if (!correctPassword(pwd, user.password))
     return message("username or password incorrect", true);
 
-  const data = {
-    username,
-  };
+  const { password, ...restUser } = user;
 
-  return message("Login sucessfully", false, data);
+  return message("Login sucessfully", false, restUser);
 }
 
 function message(content = "", error = false, data = {}) {

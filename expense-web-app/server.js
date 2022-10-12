@@ -15,7 +15,7 @@ app.use("/api/v1", routes);
 
 app.use((error, req, res, next) => {
   console.log(error.stack);
-  res.status(500).send("Some thing broken");
+  res.status(500).send(error);
 });
 
 app.listen(PORT, () => {
