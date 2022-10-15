@@ -23,6 +23,7 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
     >
       <Form.Item
         name="username"
+        wrapperCol={{ span: 24 }}
         rules={[
           {
             required: true,
@@ -35,6 +36,7 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
 
       <Form.Item
         name="password"
+        wrapperCol={{ span: 24 }}
         rules={[
           {
             required: true,
@@ -50,7 +52,7 @@ const LoginForm = ({ onSubmit, error, isLoading }) => {
         </Text>
       )}
 
-      <Form.Item>
+      <Form.Item wrapperCol={{ span: 24 }}>
         <Button
           type="primary"
           htmlType="submit"

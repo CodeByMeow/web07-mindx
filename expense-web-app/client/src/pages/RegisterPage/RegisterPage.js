@@ -110,6 +110,8 @@ const RegisterPage = () => {
             </Button>
           </Form.Item>
         </Form>
+
+        <Link to="/login">Have account? Login here</Link>
       </Row>
     </Container>
   );

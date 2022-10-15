@@ -13,7 +13,7 @@ app.use(cors("*"));
 const routes = require("./routes");
 app.use("/api/v1", routes);
 
-app.use((error, req, res, next) => {
+app.use((error, _req, res) => {
   console.log(error.stack);
   res.status(500).send(error);
 });
