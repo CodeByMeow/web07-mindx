@@ -14,10 +14,10 @@ const routes = require("./routes");
 app.use("/api/v1", routes);
 
 app.use((error, _req, res) => {
-  console.log(error.stack);
-  res.status(500).send(error);
+    console.log(error.stack);
+    res.status(500).send(error);
 });
 
 app.listen(PORT, () => {
-  console.log(`server is running at port: ${PORT}`);
+    console.log(`server is running at port: ${PORT}`);
 });
